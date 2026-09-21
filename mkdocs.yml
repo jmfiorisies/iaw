@@ -1,0 +1,77 @@
+site_name: "IAW · Implantación de Aplicaciones Web"
+
+theme:
+  name: material
+  language: es
+
+  icon:
+    logo: material/server-network
+    repo: fontawesome/brands/github
+
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - navigation.instant
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Pasar a modo oscuro
+
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Pasar a modo claro
+
+markdown_extensions:
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+
+extra_css:
+  - stylesheets/extra.css
+
+plugins:
+  - search
+
+nav:
+  - Inicio: index.md
+  - 1er Trimestre:
+      - "UD1 · Arquitectura Web, Protocolos y SSL": ud01-arquitectura-web-ssl.md
+      - "UD2 · Servidores Web Clásicos: Apache": ud02-apache.md
+      - "UD3 · Servidores de Alto Rendimiento: Nginx": ud03-nginx.md
+  - Referencia Tecnológica:
+      - tech/index.md
+      - HTTP / TLS: tech/http-tls.md
+      - Apache: tech/apache.md
+      - Nginx: tech/nginx.md
