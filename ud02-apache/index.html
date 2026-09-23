@@ -1,0 +1,1310 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../ud01-arquitectura-web-ssl/">
+      
+      
+        <link rel="next" href="../ud03-nginx/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>UD2 · Servidores Web Clásicos: Apache - IAW · Implantación de Aplicaciones Web</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ud2-servidores-web-clasicos-apache-http-server" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="IAW · Implantación de Aplicaciones Web" class="md-header__button md-logo" aria-label="IAW · Implantación de Aplicaciones Web" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 19h1a1 1 0 0 1 1 1h7v2h-7a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1H2v-2h7a1 1 0 0 1 1-1h1v-2H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-7zM4 3h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1m5 4h1V5H9zm0 8h1v-2H9zM5 5v2h2V5zm0 8v2h2v-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IAW · Implantación de Aplicaciones Web
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UD2 · Servidores Web Clásicos: Apache
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Pasar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Pasar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Pasar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Pasar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="IAW · Implantación de Aplicaciones Web" class="md-nav__button md-logo" aria-label="IAW · Implantación de Aplicaciones Web" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 19h1a1 1 0 0 1 1 1h7v2h-7a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1H2v-2h7a1 1 0 0 1 1-1h1v-2H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-7zM4 3h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1m5 4h1V5H9zm0 8h1v-2H9zM5 5v2h2V5zm0 8v2h2v-2z"/></svg>
+
+    </a>
+    IAW · Implantación de Aplicaciones Web
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1er Trimestre
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1er Trimestre
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ud01-arquitectura-web-ssl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD1 · Arquitectura Web, Protocolos y SSL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD2 · Servidores Web Clásicos: Apache
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD2 · Servidores Web Clásicos: Apache
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-fundamentos-teoricos-y-arquitectura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 1. Fundamentos Teóricos y Arquitectura
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📖 1. Fundamentos Teóricos y Arquitectura">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-que-es-exactamente-un-servidor-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 ¿Qué es exactamente un "servidor web"?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-contenido-estatico-vs-contenido-dinamico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Contenido estático vs. contenido dinámico
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-como-atiende-apache-a-varios-usuarios-a-la-vez-procesos-hilos-y-mpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 ¿Cómo atiende Apache a varios usuarios a la vez? Procesos, hilos y MPM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-donde-vive-la-configuracion-de-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 ¿Dónde vive la configuración de Apache?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-que-es-un-virtualhost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 ¿Qué es un VirtualHost?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-con-varios-virtualhosts-en-el-mismo-puerto-como-sabe-apache-cual-usar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 Con varios VirtualHosts en el mismo puerto, ¿cómo sabe Apache cuál usar?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-instalacion-configuracion-avanzada-y-hardening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ 2. Instalación, Configuración Avanzada y Hardening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-laboratorio-practico-dirigido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ 3. Laboratorio Práctico Dirigido
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-seguridad-logs-y-optimizacion-de-rendimiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛡️ 4. Seguridad, Logs y Optimización de Rendimiento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-preguntas-y-casos-de-autoevaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ 5. Preguntas y Casos de Autoevaluación
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ud03-nginx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD3 · Servidores de Alto Rendimiento: Nginx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../tech/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referencia Tecnológica
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referencia Tecnológica
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tech/http-tls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTTP / TLS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tech/apache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apache
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tech/nginx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nginx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-fundamentos-teoricos-y-arquitectura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 1. Fundamentos Teóricos y Arquitectura
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📖 1. Fundamentos Teóricos y Arquitectura">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-que-es-exactamente-un-servidor-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 ¿Qué es exactamente un "servidor web"?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-contenido-estatico-vs-contenido-dinamico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Contenido estático vs. contenido dinámico
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-como-atiende-apache-a-varios-usuarios-a-la-vez-procesos-hilos-y-mpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 ¿Cómo atiende Apache a varios usuarios a la vez? Procesos, hilos y MPM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-donde-vive-la-configuracion-de-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 ¿Dónde vive la configuración de Apache?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-que-es-un-virtualhost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 ¿Qué es un VirtualHost?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-con-varios-virtualhosts-en-el-mismo-puerto-como-sabe-apache-cual-usar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 Con varios VirtualHosts en el mismo puerto, ¿cómo sabe Apache cuál usar?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-instalacion-configuracion-avanzada-y-hardening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ 2. Instalación, Configuración Avanzada y Hardening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-laboratorio-practico-dirigido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ 3. Laboratorio Práctico Dirigido
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-seguridad-logs-y-optimizacion-de-rendimiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛡️ 4. Seguridad, Logs y Optimización de Rendimiento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-preguntas-y-casos-de-autoevaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ 5. Preguntas y Casos de Autoevaluación
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ud2-servidores-web-clasicos-apache-http-server">UD2: Servidores Web Clásicos: Apache HTTP Server</h1>
+<div class="admonition info">
+<p class="admonition-title">Ficha Técnica y Alcance de la Unidad</p>
+<ul>
+<li><strong>Carga Lectiva:</strong> 4 horas presenciales</li>
+<li><strong>Resultados de Aprendizaje:</strong> RA1 (criterios d, e, f)</li>
+<li><strong>Tecnologías Involucradas:</strong> <a href="../tech/apache/">Apache HTTP Server</a>, PHP-FPM (se detalla en UD4, no incluida en este repositorio)</li>
+<li><strong>Referencias y Estándares:</strong> CIS Apache HTTP Server Benchmark, CCN-STIC-599A20, OWASP ASVS</li>
+</ul>
+</div>
+<hr />
+<h2 id="1-fundamentos-teoricos-y-arquitectura">📖 1. Fundamentos Teóricos y Arquitectura</h2>
+<h3 id="11-que-es-exactamente-un-servidor-web">1.1 ¿Qué es exactamente un "servidor web"?</h3>
+<p>En UD1 vimos que el servidor es el programa que escucha peticiones HTTP y responde. <strong>Apache HTTP
+Server</strong> (mantenido por la Apache Software Foundation, de ahí "ASF") es uno de los programas más
+usados del mundo para cumplir ese papel. Cuando lo instalamos, se convierte en un <strong>servicio</strong> del
+sistema operativo: un programa que arranca junto al sistema y permanece en ejecución en segundo
+plano, sin que nadie tenga que "abrirlo" manualmente (como sí haríamos con un editor de texto). Quien
+gestiona ese arranque automático en Debian/Ubuntu es <strong>systemd</strong>, el sistema de inicio: es el mismo
+mecanismo que arrancará PHP-FPM en UD4, Nginx en UD3 o cualquier otro servicio del módulo — conviene
+familiarizarse con sus comandos ahora porque se repetirán constantemente el resto del curso.</p>
+<p>Puedes comprobar que un servicio está en marcha con <code>systemctl status apache2</code>; lo arrancamos,
+paramos o reiniciamos con <code>systemctl start|stop|restart apache2</code>.</p>
+<h3 id="12-contenido-estatico-vs-contenido-dinamico">1.2 Contenido estático vs. contenido dinámico</h3>
+<p>Antes de hablar de cómo Apache gestiona la concurrencia, hay que distinguir dos tipos de contenido
+que un servidor puede servir:</p>
+<ul>
+<li><strong>Estático:</strong> el fichero que se envía es exactamente el que hay guardado en el disco (una imagen
+  <code>.jpg</code>, un <code>.html</code> fijo). El servidor solo tiene que "leer y enviar", sin procesar nada.</li>
+<li><strong>Dinámico:</strong> el contenido se genera en el momento, ejecutando código (por ejemplo, un script PHP
+  que consulta una base de datos y construye el HTML al vuelo, antes de enviarlo). Esto es mucho más
+  costoso en CPU que servir un fichero estático, y es la razón por la que existen mecanismos
+  específicos (como PHP-FPM, que veremos en este UD) para gestionar ese procesamiento de forma
+  eficiente y separada del propio servidor web.</li>
+</ul>
+<h3 id="13-como-atiende-apache-a-varios-usuarios-a-la-vez-procesos-hilos-y-mpm">1.3 ¿Cómo atiende Apache a varios usuarios a la vez? Procesos, hilos y MPM</h3>
+<p>Si dos personas piden una página al mismo tiempo, el servidor tiene que poder atenderlas a las dos sin
+que una tenga que esperar a que termine la otra. Para entender cómo lo resuelve Apache, conviene fijar
+dos conceptos básicos de sistemas operativos:</p>
+<ul>
+<li><strong>Proceso:</strong> una copia en ejecución de un programa, con su propia memoria reservada, totalmente
+  aislada de otros procesos. Crear un proceso nuevo tiene cierto coste (tiempo y memoria).</li>
+<li><strong>Hilo (thread):</strong> una "sub-tarea" dentro de un mismo proceso, que comparte memoria con los demás
+  hilos de ese proceso. Crear un hilo es más barato que crear un proceso completo, pero al compartir
+  memoria hay que tener cuidado con el código que no está preparado para ejecutarse en paralelo sin
+  interferencias (código <em>no thread-safe</em>).</li>
+</ul>
+<p>Apache permite elegir cómo organiza esta concurrencia mediante un <strong>MPM</strong> (<em>Multi-Processing
+Module</em>), y hay tres modelos disponibles:</p>
+<table>
+<thead>
+<tr>
+<th>MPM</th>
+<th>Cómo atiende conexiones</th>
+<th>Cuándo usarlo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>prefork</strong></td>
+<td>Un proceso completo por cada conexión</td>
+<td>Compatible con módulos antiguos no <em>thread-safe</em> como <code>mod_php</code> clásico</td>
+</tr>
+<tr>
+<td><strong>worker</strong></td>
+<td>Procesos con varios hilos cada uno</td>
+<td>Más eficiente en memoria que prefork</td>
+</tr>
+<tr>
+<td><strong>event</strong></td>
+<td>Variante de worker que además delega la gestión de conexiones inactivas (<em>keep-alive</em>) a hilos dedicados</td>
+<td>Recomendado en producción moderna, especialmente junto a PHP-FPM externo</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>graph LR
+    A[Cliente] --&gt;|TCP:443| B[Apache MPM event]
+    B --&gt;|mod_ssl| C[Terminación TLS]
+    C --&gt;|mod_proxy_fcgi| D["PHP-FPM pool :9000"]
+    D --&gt;|socket UNIX| E[MariaDB]
+    B --&gt;|VirtualHost estático| F["/var/www/html"]</code></pre>
+<p>En despliegues modernos con PHP-FPM se recomienda <strong>event + mod_proxy_fcgi</strong>: Apache (rápido y
+ligero, gestionando muchas conexiones simultáneas) delega la parte pesada — ejecutar PHP — a un
+programa externo especializado (PHP-FPM), que se estudiará con más detalle en UD4. Esta separación de
+responsabilidades es un patrón muy habitual en arquitecturas de servidores.</p>
+<h3 id="14-donde-vive-la-configuracion-de-apache">1.4 ¿Dónde vive la configuración de Apache?</h3>
+<p>Antes de tocar ningún fichero conviene tener el mapa completo — si no, cada ruta nueva que aparezca
+parecerá sacada de la nada. En Debian/Ubuntu, Apache organiza su configuración así:</p>
+<table>
+<thead>
+<tr>
+<th>Ruta</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/etc/apache2/apache2.conf</code></td>
+<td>Fichero principal: carga todo lo demás mediante directivas <code>Include</code></td>
+</tr>
+<tr>
+<td><code>/etc/apache2/ports.conf</code></td>
+<td>En qué puertos escucha Apache (<code>Listen 80</code>, <code>Listen 443</code>)</td>
+</tr>
+<tr>
+<td><code>/etc/apache2/sites-available/</code></td>
+<td><strong>Borrador</strong> de cada VirtualHost — puede haber muchos, estén activos o no</td>
+</tr>
+<tr>
+<td><code>/etc/apache2/sites-enabled/</code></td>
+<td>Solo los VirtualHosts <strong>activos</strong>: son enlaces simbólicos a ficheros de <code>sites-available/</code></td>
+</tr>
+<tr>
+<td><code>/etc/apache2/mods-available/</code> y <code>mods-enabled/</code></td>
+<td>Igual que los sitios, pero para módulos</td>
+</tr>
+<tr>
+<td><code>/var/www/</code></td>
+<td>Carpeta por defecto donde vive el contenido de los sitios (el <code>DocumentRoot</code>)</td>
+</tr>
+<tr>
+<td><code>/var/log/apache2/</code></td>
+<td>Registro de actividad y errores</td>
+</tr>
+</tbody>
+</table>
+<p>La separación <em>available</em> vs. <em>enabled</em> es el mismo patrón en sitios y en módulos: tener un fichero en
+<code>sites-available</code> no activa nada por sí solo, es solo un borrador guardado; hace falta "encenderlo"
+explícitamente (con <code>a2ensite</code>, que veremos en el laboratorio) para que Apache lo cargue.</p>
+<h3 id="15-que-es-un-virtualhost">1.5 ¿Qué es un VirtualHost?</h3>
+<p>Un mismo servidor físico (o virtual) puede alojar <strong>varios sitios web distintos</strong> a la vez, cada uno
+con su propio dominio, sus propios ficheros y su propia configuración. Cada uno de esos sitios se
+define en Apache como un <strong>VirtualHost</strong>: un bloque de configuración que le dice a Apache "cuando
+llegue una petición para <em>este</em> dominio, sírvela desde <em>esta</em> carpeta, con <em>esta</em> configuración de
+TLS". Sin VirtualHosts, cada dominio necesitaría su propia máquina física — algo enormemente
+ineficiente si el tráfico de cada sitio es moderado.</p>
+<h3 id="16-con-varios-virtualhosts-en-el-mismo-puerto-como-sabe-apache-cual-usar">1.6 Con varios VirtualHosts en el mismo puerto, ¿cómo sabe Apache cuál usar?</h3>
+<p>Esto suele ser el punto que menos se entiende a la primera, así que vale la pena pararse: si <code>app.iaw.local</code>
+y <code>otroweb.local</code> comparten la misma IP y el mismo puerto 443, ¿cómo distingue Apache qué VirtualHost
+debe atender cada petición? La respuesta conecta directamente con algo que ya vimos en UD1:</p>
+<ul>
+<li><strong>Sin cifrar (HTTP):</strong> Apache lee la cabecera <code>Host:</code> que el navegador envía en la propia petición
+  (la misma que vimos en el ejemplo de UD1 — <code>Host: app.iaw.local</code>) y la compara con el <code>ServerName</code>
+  de cada VirtualHost disponible.</li>
+<li><strong>Cifrado (HTTPS):</strong> el problema es que, en teoría, hace falta saber <em>qué certificado</em> enviar antes
+  incluso de que la petición HTTP (con su cabecera <code>Host</code>) llegue a viajar cifrada. Esto se resuelve
+  con <strong>SNI</strong> (<em>Server Name Indication</em>): el navegador indica el dominio deseado, en claro, como parte
+  del propio saludo inicial de TLS, antes de que empiece el cifrado — así Apache ya sabe qué
+  certificado y qué VirtualHost usar desde el primer momento.</li>
+</ul>
+<p>Si ningún <code>ServerName</code> coincide, Apache usa el <strong>primer VirtualHost definido</strong> como respuesta por
+defecto — por eso el orden en que se activan los sitios importa, y por eso es buena práctica tener
+siempre un VirtualHost "por defecto" explícito y controlado.</p>
+<h2 id="2-instalacion-configuracion-avanzada-y-hardening">⚙️ 2. Instalación, Configuración Avanzada y Hardening</h2>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Instalación Apache + PHP-FPM en Debian/Ubuntu Server</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>apache2<span class="w"> </span>php8.3-fpm<span class="w"> </span>libapache2-mod-fcgid
+a2enmod<span class="w"> </span>proxy<span class="w"> </span>proxy_fcgi<span class="w"> </span>setenvif<span class="w"> </span>rewrite<span class="w"> </span>ssl<span class="w"> </span>headers
+a2dismod<span class="w"> </span>mpm_prefork
+a2enmod<span class="w"> </span>mpm_event
+systemctl<span class="w"> </span>restart<span class="w"> </span>apache2
+</code></pre></div></td></tr></table></div>
+<p><code>a2enmod</code>/<code>a2dismod</code> (<em>Apache 2 enable/disable module</em>) activan o desactivan <strong>módulos</strong>: piezas de
+funcionalidad opcional que se pueden añadir a Apache sin recompilarlo (aquí activamos el proxy hacia
+FastCGI, la reescritura de URLs, TLS y la gestión de cabeceras HTTP). Usamos <code>systemctl restart</code> (no
+<code>reload</code>) porque cambiar el MPM activo es un cambio estructural del propio proceso maestro de Apache,
+no una simple recarga de configuración — <code>reload</code> no basta aquí.</p>
+<div class="admonition example">
+<p class="admonition-title">Laboratorio / Despliegue Real</p>
+<p>Antes de complicar nada con TLS o PHP, comprueba que la instalación por defecto ya funciona:
+<code>curl -I http://localhost/</code> debería devolver <code>200 OK</code> y servir la página de bienvenida de Apache
+(<code>/var/www/html/index.html</code>, creada automáticamente por el paquete). Si esto falla, ningún paso
+posterior va a funcionar — resuelve esto primero.</p>
+</div>
+<p>Ahora sí, preparamos la carpeta de nuestro propio sitio (el <code>DocumentRoot</code> que usará el VirtualHost):</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Crear el DocumentRoot del sitio</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/www/app
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&lt;h1&gt;Funciona: app.iaw.local&lt;/h1&gt;&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/var/www/app/index.html
+chown<span class="w"> </span>-R<span class="w"> </span>www-data:www-data<span class="w"> </span>/var/www/app
+</code></pre></div></td></tr></table></div>
+<p><code>chown www-data:www-data</code> asigna la carpeta al usuario con el que <strong>realmente</strong> se ejecuta Apache (no
+root, por seguridad — principio de mínimo privilegio): así el proceso puede leer esos ficheros sin
+necesitar permisos de administrador.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">/etc/apache2/sites-available/app-segura.conf</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">&lt;VirtualHost</span><span class="w"> </span><span class="s">*:443</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nb">ServerName</span><span class="w"> </span>app.iaw.local
+<span class="w">    </span><span class="nb">DocumentRoot</span><span class="w"> </span><span class="sx">/var/www/app</span>
+
+<span class="w">    </span><span class="nb">SSLEngine</span><span class="w"> </span><span class="k">on</span>
+<span class="w">    </span><span class="nb">SSLCertificateFile</span><span class="w"> </span><span class="sx">/etc/ssl/lab/lab.crt</span>
+<span class="w">    </span><span class="nb">SSLCertificateKeyFile</span><span class="w"> </span><span class="sx">/etc/ssl/lab/lab.key</span>
+<span class="w">    </span><span class="nb">SSLProtocol</span><span class="w"> </span>-all<span class="w"> </span>+TLSv1.3<span class="w"> </span>+TLSv1.2
+<span class="w">    </span><span class="nb">SSLCipherSuite</span><span class="w"> </span>HIGH:!aNULL:!MD5:!3DES
+
+<span class="w">    </span><span class="nt">&lt;FilesMatch</span><span class="w"> </span><span class="s">&quot;\.php$&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nb">SetHandler</span><span class="w"> </span><span class="s2">&quot;proxy:unix:/run/php/php8.3-fpm.sock|fcgi://localhost&quot;</span>
+<span class="w">    </span><span class="nt">&lt;/FilesMatch&gt;</span>
+
+<span class="w">    </span><span class="nb">Header</span><span class="w"> </span>always<span class="w"> </span>set<span class="w"> </span>Strict-Transport-Security<span class="w"> </span><span class="s2">&quot;max-age=63072000; includeSubDomains&quot;</span>
+<span class="w">    </span><span class="nb">Header</span><span class="w"> </span>always<span class="w"> </span>set<span class="w"> </span>X-Content-Type-Options<span class="w"> </span><span class="s2">&quot;nosniff&quot;</span>
+<span class="w">    </span><span class="nb">Header</span><span class="w"> </span>unset<span class="w"> </span>X-Powered-By
+
+<span class="w">    </span><span class="nb">ErrorLog</span><span class="w"> </span>${APACHE_LOG_DIR}/app_error.log
+<span class="w">    </span><span class="nb">CustomLog</span><span class="w"> </span>${APACHE_LOG_DIR}/app_access.log<span class="w"> </span>combined
+<span class="nt">&lt;/VirtualHost&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p>Explicación línea a línea de lo esencial: <code>ServerName</code> es precisamente el valor que Apache compara
+contra la cabecera <code>Host</code>/SNI del apartado 1.6 para elegir este bloque; <code>DocumentRoot</code> es la carpeta
+que acabamos de crear; <code>SSLCertificateFile</code>/<code>SSLCertificateKeyFile</code> cargan el certificado y clave
+generados en UD1; y <code>&lt;FilesMatch "\.php$"&gt;</code> indica que <strong>cualquier fichero que termine en <code>.php</code></strong>
+debe procesarse de forma especial (no enviarse tal cual, sino ejecutarse) — ahí es donde entra
+PHP-FPM.</p>
+<p><code>SetHandler proxy:unix:...fcgi://localhost</code> conecta Apache al <em>socket</em> UNIX de PHP-FPM: evita el coste
+de un socket TCP local y aísla el intérprete PHP en un proceso con su propio usuario/grupo (<code>www-data</code>
+o dedicado), cumpliendo el principio de mínimo privilegio de CIS Benchmark 3.x.</p>
+<div class="admonition danger">
+<p class="admonition-title">Seguridad y Hardening (CIS / CCN-CERT / OWASP)</p>
+<p><code>Header unset X-Powered-By</code> y <code>ServerTokens Prod</code> / <code>ServerSignature Off</code> en <code>/etc/apache2/conf-enabled/security.conf</code>
+evitan fuga de versión exacta del <em>stack</em> (CIS 3.1, CCN-STIC-599A20 §4.2).</p>
+</div>
+<h2 id="3-laboratorio-practico-dirigido">🛠️ 3. Laboratorio Práctico Dirigido</h2>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Activar sitio, validar sintaxis y recargar</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>a2ensite<span class="w"> </span>app-segura.conf
+apachectl<span class="w"> </span>configtest
+systemctl<span class="w"> </span>reload<span class="w"> </span>apache2
+curl<span class="w"> </span>-I<span class="w"> </span>https://app.iaw.local/
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><span class="filename">Salida esperada del último comando</span><pre><span></span><code>HTTP/2 200
+date: ...
+server: Apache
+strict-transport-security: max-age=63072000; includeSubDomains
+content-type: text/html
+</code></pre></div>
+<p><code>a2ensite</code> activa el VirtualHost (crea un enlace simbólico desde <code>sites-available</code> a <code>sites-enabled</code>,
+justo el patrón del apartado 1.4); <code>apachectl configtest</code> es un paso que <strong>nunca debe omitirse</strong>:
+valida la sintaxis del fichero antes de recargar, evitando dejar el servidor caído por un error
+tipográfico en producción. Aquí sí usamos <code>reload</code> en vez de <code>restart</code>: solo estamos añadiendo un
+VirtualHost nuevo, no cambiando el MPM, así que Apache puede releer su configuración sin cortar las
+conexiones que ya estuvieran activas — la misma distinción volverá a aparecer en UD3 con Nginx.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Verificación de que PHP no se ejecuta con mod_php residual</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>apache2ctl<span class="w"> </span>-M<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>php<span class="w">   </span><span class="c1"># No debe listar php_module</span>
+systemctl<span class="w"> </span>status<span class="w"> </span>php8.3-fpm
+</code></pre></div></td></tr></table></div>
+<h2 id="4-seguridad-logs-y-optimizacion-de-rendimiento">🛡️ 4. Seguridad, Logs y Optimización de Rendimiento</h2>
+<ul>
+<li>Logs: <code>/var/log/apache2/app_error.log</code> y <code>app_access.log</code> (formato <code>combined</code>). Revisar estos
+  ficheros es el primer paso ante cualquier incidencia — casi siempre explican qué ha fallado y por qué.</li>
+<li>Ajuste de MPM event en <code>/etc/apache2/mods-available/mpm_event.conf</code>: <code>MaxRequestWorkers</code> debe
+  dimensionarse según <code>RAM disponible / tamaño medio de proceso hijo</code>, evitando <em>swapping</em> bajo carga.</li>
+<li><code>mod_status</code> (<code>/server-status</code>, restringido por IP) permite monitorizar <em>workers</em> activos en tiempo real.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Rendimiento y Cuellos de Botella</p>
+<p>Con PHP-FPM externo, <code>pm.max_children</code> del <em>pool</em> (no <code>MaxRequestWorkers</code> de Apache) es el límite
+real de concurrencia de PHP; dimensionar ambos de forma descoordinada genera 502/504 bajo carga.</p>
+</div>
+<h2 id="5-preguntas-y-casos-de-autoevaluacion">❓ 5. Preguntas y Casos de Autoevaluación</h2>
+<ol>
+<li>
+<p><strong>¿Por qué no se puede combinar MPM <code>event</code> con <code>mod_php</code> clásico?</strong>
+   <em>Resolución:</em> <code>mod_php</code> no es <em>thread-safe</em>; MPM event usa hilos para gestionar conexiones keep-alive,
+   lo que provocaría condiciones de carrera. Solución: PHP-FPM vía <code>mod_proxy_fcgi</code> (proceso separado).</p>
+</li>
+<li>
+<p><strong>El sitio devuelve 502 Bad Gateway de forma intermitente. ¿Qué dos parámetros revisar primero?</strong>
+   <em>Resolución:</em> <code>pm.max_children</code> en el <em>pool</em> PHP-FPM (saturación) y <code>request_terminate_timeout</code>;
+   también el <em>socket</em> <code>listen.backlog</code> si hay picos de conexión.</p>
+</li>
+<li>
+<p><strong>¿Qué riesgo mitiga <code>Header unset X-Powered-By</code> y <code>ServerTokens Prod</code>?</strong>
+   <em>Resolución:</em> Reduce <em>fingerprinting</em> de versión exacta que facilitaría explotar CVEs conocidas
+   de esa versión concreta (OWASP: <em>Information Exposure</em>, CWE-200).</p>
+</li>
+<li>
+<p><strong>Diferencia entre <code>SetHandler</code> con socket UNIX y <code>ProxyPass</code> con <code>fcgi://127.0.0.1:9000</code>.</strong>
+   <em>Resolución:</em> El socket UNIX evita la pila TCP/IP local (menor latencia, sin puerto expuesto);
+   TCP es necesario solo si PHP-FPM corre en otro host/contenedor.</p>
+</li>
+<li>
+<p><strong>¿Por qué se recomienda TLS 1.3+1.2 y no dejar <code>SSLProtocol all</code>?</strong>
+   <em>Resolución:</em> <code>all</code> incluiría SSLv3/TLS1.0/1.1, protocolos con vulnerabilidades conocidas
+   (POODLE, BEAST) y no conformes con CCN-STIC ni PCI-DSS 4.0.</p>
+</li>
+<li>
+<p><strong>Tienes dos VirtualHosts en el puerto 443 y ninguno tiene el <code>ServerName</code> que pide el cliente. ¿Qué VirtualHost responde?</strong>
+   <em>Resolución:</em> El <strong>primero definido</strong> en el orden de carga de Apache (normalmente, el primer
+   fichero activado alfabéticamente en <code>sites-enabled/</code>) — de ahí la importancia de tener siempre un
+   VirtualHost por defecto explícito y controlado.</p>
+</li>
+<li>
+<p><strong>Acabas de ejecutar <code>a2ensite</code> sobre un VirtualHost nuevo. ¿Con <code>reload</code> es suficiente, o hace falta <code>restart</code>?</strong>
+   <em>Resolución:</em> Con <code>reload</code> basta: añadir un VirtualHost es releer configuración, no cambiar el
+   MPM ni otros parámetros estructurales del proceso maestro; <code>restart</code> solo es necesario para esos
+   cambios estructurales (como el cambio de MPM hecho en la instalación).</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.indexes", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

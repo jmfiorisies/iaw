@@ -1,0 +1,1234 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../ud02-apache/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>UD1 · Arquitectura Web, Protocolos y SSL - IAW · Implantación de Aplicaciones Web</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ud1-arquitectura-web-protocolos-y-entornos-de-desarrollo" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="IAW · Implantación de Aplicaciones Web" class="md-header__button md-logo" aria-label="IAW · Implantación de Aplicaciones Web" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 19h1a1 1 0 0 1 1 1h7v2h-7a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1H2v-2h7a1 1 0 0 1 1-1h1v-2H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-7zM4 3h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1m5 4h1V5H9zm0 8h1v-2H9zM5 5v2h2V5zm0 8v2h2v-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IAW · Implantación de Aplicaciones Web
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UD1 · Arquitectura Web, Protocolos y SSL
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Pasar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Pasar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Pasar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Pasar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="IAW · Implantación de Aplicaciones Web" class="md-nav__button md-logo" aria-label="IAW · Implantación de Aplicaciones Web" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 19h1a1 1 0 0 1 1 1h7v2h-7a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1H2v-2h7a1 1 0 0 1 1-1h1v-2H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-7zM4 3h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1m5 4h1V5H9zm0 8h1v-2H9zM5 5v2h2V5zm0 8v2h2v-2z"/></svg>
+
+    </a>
+    IAW · Implantación de Aplicaciones Web
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1er Trimestre
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1er Trimestre
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD1 · Arquitectura Web, Protocolos y SSL
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD1 · Arquitectura Web, Protocolos y SSL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-fundamentos-teoricos-y-arquitectura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 1. Fundamentos Teóricos y Arquitectura
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📖 1. Fundamentos Teóricos y Arquitectura">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-antes-de-empezar-que-es-realmente-una-aplicacion-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Antes de empezar: ¿qué es realmente "una aplicación web"?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-el-protocolo-http-la-gramatica-de-la-conversacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 El protocolo HTTP: la "gramática" de la conversación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-donde-se-ejecuta-el-codigo-cliente-vs-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 ¿Dónde se ejecuta el código? Cliente vs. servidor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-por-que-https-y-no-solo-http-fundamentos-de-cifrado-para-quien-no-ha-visto-criptografia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 ¿Por qué HTTPS y no solo HTTP? Fundamentos de cifrado para quien no ha visto criptografía
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-instalacion-configuracion-avanzada-y-hardening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ 2. Instalación, Configuración Avanzada y Hardening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-laboratorio-practico-dirigido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ 3. Laboratorio Práctico Dirigido
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-seguridad-logs-y-optimizacion-de-rendimiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛡️ 4. Seguridad, Logs y Optimización de Rendimiento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-preguntas-y-casos-de-autoevaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ 5. Preguntas y Casos de Autoevaluación
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ud02-apache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD2 · Servidores Web Clásicos: Apache
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ud03-nginx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD3 · Servidores de Alto Rendimiento: Nginx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../tech/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referencia Tecnológica
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referencia Tecnológica
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tech/http-tls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTTP / TLS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tech/apache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apache
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tech/nginx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nginx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-fundamentos-teoricos-y-arquitectura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 1. Fundamentos Teóricos y Arquitectura
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📖 1. Fundamentos Teóricos y Arquitectura">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-antes-de-empezar-que-es-realmente-una-aplicacion-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Antes de empezar: ¿qué es realmente "una aplicación web"?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-el-protocolo-http-la-gramatica-de-la-conversacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 El protocolo HTTP: la "gramática" de la conversación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-donde-se-ejecuta-el-codigo-cliente-vs-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 ¿Dónde se ejecuta el código? Cliente vs. servidor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-por-que-https-y-no-solo-http-fundamentos-de-cifrado-para-quien-no-ha-visto-criptografia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 ¿Por qué HTTPS y no solo HTTP? Fundamentos de cifrado para quien no ha visto criptografía
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-instalacion-configuracion-avanzada-y-hardening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ 2. Instalación, Configuración Avanzada y Hardening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-laboratorio-practico-dirigido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ 3. Laboratorio Práctico Dirigido
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-seguridad-logs-y-optimizacion-de-rendimiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛡️ 4. Seguridad, Logs y Optimización de Rendimiento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-preguntas-y-casos-de-autoevaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ 5. Preguntas y Casos de Autoevaluación
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ud1-arquitectura-web-protocolos-y-entornos-de-desarrollo">UD1: Arquitectura Web, Protocolos y Entornos de Desarrollo</h1>
+<div class="admonition info">
+<p class="admonition-title">Ficha Técnica y Alcance de la Unidad</p>
+<ul>
+<li><strong>Carga Lectiva:</strong> 5 horas presenciales</li>
+<li><strong>Resultados de Aprendizaje:</strong> RA1 (criterios a, b, c)</li>
+<li><strong>Tecnologías Involucradas:</strong> <a href="../tech/http-tls/">HTTP/HTTPS</a></li>
+<li><strong>Referencias y Estándares:</strong> RFC 9110 (HTTP Semantics), RFC 9113 (HTTP/2), RFC 8446 (TLS 1.3), NIST SP 800-52</li>
+</ul>
+</div>
+<hr />
+<h2 id="1-fundamentos-teoricos-y-arquitectura">📖 1. Fundamentos Teóricos y Arquitectura</h2>
+<h3 id="11-antes-de-empezar-que-es-realmente-una-aplicacion-web">1.1 Antes de empezar: ¿qué es realmente "una aplicación web"?</h3>
+<p>Cuando escribes una URL en el navegador (por ejemplo <code>https://app.iaw.local</code>) y aparece una página,
+en realidad han ocurrido varias cosas en cuestión de milisegundos, entre dos ordenadores distintos
+que ni siquiera están en el mismo edificio:</p>
+<ol>
+<li>Tu navegador (el <strong>cliente</strong>) necesita saber a qué dirección IP corresponde ese nombre. Para eso
+   consulta un <strong>DNS</strong> (<em>Domain Name System</em>), que funciona como una agenda de contactos: le das un
+   nombre ("app.iaw.local") y te devuelve un número (una IP, p. ej. <code>192.168.1.50</code>).</li>
+<li>Con esa IP, el navegador abre una conexión de red hacia un <strong>puerto</strong> concreto de esa máquina
+   (el 443 si es HTTPS, el 80 si es HTTP sin cifrar) — un puerto es simplemente un número que identifica
+   <em>qué programa</em> de ese ordenador debe atender la petición, igual que un número de apartamento
+   identifica a quién va dirigida una carta dentro de un edificio.</li>
+<li>Al otro lado, un programa llamado <strong>servidor web</strong> (Apache, Nginx...) está escuchando en ese
+   puerto, permanentemente encendido, esperando peticiones.</li>
+<li>Cliente y servidor "hablan" siguiendo unas reglas comunes acordadas de antemano: eso es un
+   <strong>protocolo</strong>. Para la web, ese protocolo es <strong>HTTP</strong> (o su versión cifrada, HTTPS).</li>
+<li>El servidor procesa la petición (puede ser tan simple como leer un fichero HTML del disco, o tan
+   complejo como consultar una base de datos y generar la página al vuelo) y devuelve una
+   <strong>respuesta</strong>.</li>
+</ol>
+<p>A este modelo, en el que un programa pide algo (cliente) y otro lo atiende (servidor), se le llama
+<strong>arquitectura cliente-servidor</strong>, y es la base de prácticamente toda la informática en red: no solo
+la web, también el correo electrónico, la mensajería, los videojuegos online, etc.</p>
+<div class="admonition tip">
+<p class="admonition-title">Buenas Prácticas Sysadmin / DevOps</p>
+<p>Analogía útil para el aula: el cliente es como un comensal en un restaurante, el servidor es la
+cocina. El comensal no entra a cocinar; pide un plato (la petición) siguiendo una carta con
+formato conocido (el protocolo), y la cocina responde con el plato preparado (la respuesta).
+Varios comensales pueden pedir a la vez sin molestarse entre sí: eso es lo que veremos en UD2/UD3
+cuando hablemos de cómo un servidor atiende a <em>muchos</em> clientes simultáneamente.</p>
+</div>
+<h3 id="12-el-protocolo-http-la-gramatica-de-la-conversacion">1.2 El protocolo HTTP: la "gramática" de la conversación</h3>
+<p><strong>HTTP</strong> (<em>HyperText Transfer Protocol</em>) define exactamente cómo debe ser el mensaje que envía el
+cliente y cómo debe ser la respuesta del servidor, para que ambos se entiendan sin ambigüedad —
+igual que un formulario oficial tiene campos fijos que rellenar en un orden concreto. El <strong>RFC 9110</strong>
+es el documento internacional (de la IETF, el organismo que estandariza los protocolos de Internet)
+que define esta gramática. No hace falta memorizarlo, pero sí entender sus piezas clave:</p>
+<p><strong>Métodos</strong> (qué se quiere hacer):</p>
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>Uso típico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td>Pedir un recurso (una página, una imagen) sin modificar nada en el servidor</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td>Enviar datos al servidor (p. ej. el contenido de un formulario)</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td>Reemplazar un recurso existente por completo</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td>Eliminar un recurso</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td>Modificar parcialmente un recurso</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Códigos de estado</strong> (cómo responde el servidor):</p>
+<table>
+<thead>
+<tr>
+<th>Rango</th>
+<th>Significado</th>
+<th>Ejemplo típico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>2xx</code></td>
+<td>Éxito</td>
+<td><code>200 OK</code></td>
+</tr>
+<tr>
+<td><code>3xx</code></td>
+<td>Redirección</td>
+<td><code>301 Moved Permanently</code></td>
+</tr>
+<tr>
+<td><code>4xx</code></td>
+<td>Error del cliente</td>
+<td><code>404 Not Found</code> (recurso inexistente)</td>
+</tr>
+<tr>
+<td><code>5xx</code></td>
+<td>Error del servidor</td>
+<td><code>500 Internal Server Error</code></td>
+</tr>
+</tbody>
+</table>
+<p>Una petición y respuesta HTTP reales (simplificadas) tienen este aspecto — esto es exactamente lo
+que viaja por la red cuando pides una página:</p>
+<div class="highlight"><span class="filename">Petición HTTP real (lo que envía el navegador)</span><pre><span></span><code>GET /index.html HTTP/1.1
+Host: app.iaw.local
+User-Agent: Mozilla/5.0
+Accept: text/html
+</code></pre></div>
+<div class="highlight"><span class="filename">Respuesta HTTP real (lo que devuelve el servidor)</span><pre><span></span><code>HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+Content-Length: 1256
+
+&lt;html&gt;...&lt;/html&gt;
+</code></pre></div>
+<p>El transporte concreto de ese mensaje (HTTP/1.1 tradicional, HTTP/2 sobre RFC 9113 con multiplexado,
+o HTTP/3 sobre QUIC) puede cambiar la <em>forma</em> de enviarlo por la red, pero no cambia el <em>significado</em>
+de los métodos y códigos de estado — de ahí que HTTP/2 y HTTP/3 sean compatibles con aplicaciones
+escritas pensando solo en HTTP/1.1.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant C as Cliente (Navegador)
+    participant N as Nginx (Proxy inverso :443)
+    participant A as Apache/PHP-FPM (:8080)
+    participant D as MariaDB (:3306)
+    C-&gt;&gt;N: GET /index.php HTTPS (TLS 1.3)
+    N-&gt;&gt;A: proxy_pass HTTP interno
+    A-&gt;&gt;D: Query SQL (socket UNIX)
+    D--&gt;&gt;A: Result set
+    A--&gt;&gt;N: HTML/JSON
+    N--&gt;&gt;C: 200 OK (TLS)</code></pre>
+<h3 id="13-donde-se-ejecuta-el-codigo-cliente-vs-servidor">1.3 ¿Dónde se ejecuta el código? Cliente vs. servidor</h3>
+<p>Es habitual confundir estos dos conceptos al principio, así que conviene fijarlos bien:</p>
+<ul>
+<li><strong>Procesamiento en el entorno cliente:</strong> código que se ejecuta <em>dentro del navegador</em> del usuario
+  (JavaScript manipulando el DOM, validaciones visuales de un formulario antes de enviarlo). El
+  usuario puede ver ese código con "Ver código fuente" o las herramientas de desarrollador.</li>
+<li><strong>Procesamiento en el entorno servidor:</strong> código que se ejecuta <em>en la máquina del servidor</em>, antes
+  de enviar la respuesta (PHP-FPM en UD2/UD4, WSGI/ASGI de Python en UD5). El usuario <strong>nunca</strong> ve
+  este código, solo el resultado (HTML/JSON) que el servidor decide enviarle.</li>
+</ul>
+<p>Esta distinción es la base de todo el módulo: en las próximas unidades instalaremos y configuraremos
+precisamente los programas que hacen ese "procesamiento en el entorno servidor".</p>
+<h3 id="14-por-que-https-y-no-solo-http-fundamentos-de-cifrado-para-quien-no-ha-visto-criptografia">1.4 ¿Por qué HTTPS y no solo HTTP? Fundamentos de cifrado para quien no ha visto criptografía</h3>
+<p>HTTP por sí solo viaja <strong>en texto plano</strong>: cualquiera que intercepte el tráfico de red (en una wifi
+pública, por ejemplo) puede leer usuario y contraseña de un formulario de login como si leyera una
+postal sin sobre. <strong>TLS</strong> (<em>Transport Layer Security</em>) es la capa que cifra esa comunicación —
+HTTPS es, literalmente, "HTTP sobre TLS".</p>
+<p>Para entenderlo sin entrar aún en las matemáticas: TLS combina dos tipos de cifrado:</p>
+<ul>
+<li><strong>Cifrado asimétrico</strong> (clave pública/privada): se usa solo al principio de la conexión (el
+  <em>handshake</em>) para que cliente y servidor se pongan de acuerdo de forma segura en un secreto
+  compartido, sin haberse visto antes. Es como si dos personas pudieran acordar una clave secreta
+  gritándosela en una plaza llena de gente, sin que nadie más pudiera deducirla.</li>
+<li><strong>Cifrado simétrico</strong> (una única clave compartida): una vez acordado ese secreto, se usa para
+  cifrar/descifrar todo el tráfico real, porque es mucho más rápido computacionalmente.</li>
+</ul>
+<p>Un <strong>certificado digital</strong> (fichero <code>.crt</code>) es el documento que demuestra que una clave pública
+pertenece realmente a "app.iaw.local" y no a un impostor — lo emite una <strong>Autoridad de Certificación</strong>
+(CA) de confianza (o, como haremos en el laboratorio, lo autofirmamos para pruebas).</p>
+<p><strong>TLS 1.3</strong> (RFC 8446) es la versión actual del protocolo: reduce el <em>handshake</em> a un único
+<em>round-trip</em> (0-RTT en reconexiones) y elimina cifrados obsoletos (RC4, CBC estático), siendo el
+mínimo exigido por NIST SP 800-52 Rev.2 para servicios federales — referencia de facto en auditorías
+de seguridad.</p>
+<h2 id="2-instalacion-configuracion-avanzada-y-hardening">⚙️ 2. Instalación, Configuración Avanzada y Hardening</h2>
+<div class="admonition example">
+<p class="admonition-title">Laboratorio / Despliegue Real</p>
+<p>Entorno base: Debian 12 / Ubuntu Server 24.04 LTS. Estos comandos preparan una máquina virtual
+o física recién instalada para empezar a trabajar como servidor.</p>
+</div>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Preparación del sistema base</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt<span class="w"> </span>full-upgrade<span class="w"> </span>-y
+apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>curl<span class="w"> </span>gnupg2<span class="w"> </span>ca-certificates<span class="w"> </span>lsb-release<span class="w"> </span>apt-transport-https
+timedatectl<span class="w"> </span>set-ntp<span class="w"> </span><span class="nb">true</span><span class="w">          </span><span class="c1"># Sincronización horaria obligatoria: validación de certificados X.509</span>
+ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">80</span>,443/tcp
+</code></pre></div></td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">Base Teórica y RFCs</p>
+<p><code>timedatectl set-ntp true</code> no es opcional: los certificados TLS tienen fecha de validez ("no
+antes de", "no después de"); si el reloj del servidor está desajustado, puede rechazar
+certificados válidos o aceptar certificados ya caducados. <code>ufw allow 80,443/tcp</code> abre en el
+cortafuegos del propio sistema los dos puertos estándar de la web (80 = HTTP, 443 = HTTPS).</p>
+</div>
+<p>Generación de un certificado autofirmado de laboratorio (en producción usaríamos Let's Encrypt/ACME,
+un servicio gratuito que automatiza la emisión de certificados válidos reconocidos por navegadores):</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Certificado de prueba ECDSA P-256</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>/etc/ssl/lab
+openssl<span class="w"> </span>req<span class="w"> </span>-x509<span class="w"> </span>-nodes<span class="w"> </span>-newkey<span class="w"> </span>ec<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-pkeyopt<span class="w"> </span>ec_paramgen_curve:prime256v1<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-keyout<span class="w"> </span>/etc/ssl/lab/lab.key<span class="w"> </span>-out<span class="w"> </span>/etc/ssl/lab/lab.crt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-days<span class="w"> </span><span class="m">365</span><span class="w"> </span>-subj<span class="w"> </span><span class="s2">&quot;/CN=app.iaw.local&quot;</span>
+chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/etc/ssl/lab/lab.key
+</code></pre></div></td></tr></table></div>
+<p><code>lab.key</code> es la <strong>clave privada</strong> (nunca se comparte, de ahí <code>chmod 600</code>: solo el propietario puede
+leerla) y <code>lab.crt</code> es el <strong>certificado público</strong> que sí se envía a cada cliente que se conecta.</p>
+<div class="admonition danger">
+<p class="admonition-title">Seguridad y Hardening (CIS / CCN-CERT / OWASP)</p>
+<p>Usar siempre curvas ECDSA (<code>prime256v1</code>/<code>secp384r1</code>) frente a RSA-2048 en nuevas implementaciones:
+menor coste computacional por <em>handshake</em> con equivalente nivel de seguridad (CNSA 1.0 / CCN-STIC 807).</p>
+</div>
+<h2 id="3-laboratorio-practico-dirigido">🛠️ 3. Laboratorio Práctico Dirigido</h2>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Verificación de protocolo negociado con OpenSSL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>openssl<span class="w"> </span>s_client<span class="w"> </span>-connect<span class="w"> </span>app.iaw.local:443<span class="w"> </span>-tls1_3<span class="w"> </span>-brief
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Prueba de cabeceras HTTP con curl</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>curl<span class="w"> </span>-svo<span class="w"> </span>/dev/null<span class="w"> </span>https://app.iaw.local/<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;SSL connection|HTTP/&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>Comprobar el resultado esperado: <code>SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384</code> y
+<code>HTTP/2 200</code>. Si en vez de eso aparece un error de conexión, lo más probable es que aún no haya
+ningún servidor web escuchando en el puerto 443 — eso es precisamente lo que instalaremos en UD2 y
+UD3. Documentar en la memoria de prácticas el <em>cipher suite</em> negociado y justificar su elección.</p>
+<h2 id="4-seguridad-logs-y-optimizacion-de-rendimiento">🛡️ 4. Seguridad, Logs y Optimización de Rendimiento</h2>
+<p><code>openssl s_client</code> y herramientas como <code>testssl.sh</code> permiten auditar la superficie TLS expuesta.
+Cabeceras de seguridad mínimas a exigir desde esta UD (se configurarán en UD2/UD3):</p>
+<table>
+<thead>
+<tr>
+<th>Cabecera</th>
+<th>Valor recomendado</th>
+<th>¿Para qué sirve?</th>
+<th>Referencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Strict-Transport-Security</code></td>
+<td><code>max-age=63072000; includeSubDomains; preload</code></td>
+<td>Obliga al navegador a usar siempre HTTPS con ese dominio, incluso si el usuario teclea <code>http://</code></td>
+<td>OWASP ASVS V9</td>
+</tr>
+<tr>
+<td><code>X-Content-Type-Options</code></td>
+<td><code>nosniff</code></td>
+<td>Evita que el navegador intente "adivinar" el tipo de un fichero, lo que podría ejecutar contenido malicioso disfrazado</td>
+<td>OWASP Cheat Sheet Series</td>
+</tr>
+<tr>
+<td><code>Content-Security-Policy</code></td>
+<td>política restrictiva por defecto</td>
+<td>Limita desde qué orígenes se puede cargar JavaScript/CSS, mitigando ataques XSS</td>
+<td>OWASP CSP Cheat Sheet</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-preguntas-y-casos-de-autoevaluacion">❓ 5. Preguntas y Casos de Autoevaluación</h2>
+<ol>
+<li>
+<p><strong>¿Por qué TLS 1.3 elimina el modo CBC estático de versiones anteriores?</strong>
+   <em>Resolución:</em> Por vulnerabilidad a ataques de <em>padding oracle</em> (BEAST/Lucky13); TLS 1.3 solo permite
+   cifrados AEAD (AES-GCM, ChaCha20-Poly1305), que integran autenticación e imposibilitan ese vector.</p>
+</li>
+<li>
+<p><strong>Un cliente reporta <code>ERR_SSL_PROTOCOL_ERROR</code> tras activar HTTP/2. ¿Primera comprobación?</strong>
+   <em>Resolución:</em> Verificar que el certificado soporta ALPN y que el módulo del servidor (<code>mod_http2</code> en
+   Apache, compilación con <code>--with-http_v2_module</code> en Nginx) está cargado; HTTP/2 exige TLS en la
+   práctica totalidad de navegadores.</p>
+</li>
+<li>
+<p><strong>¿Qué diferencia hay entre <code>Connection: keep-alive</code> (HTTP/1.1) y el multiplexado de HTTP/2?</strong>
+   <em>Resolución:</em> Keep-alive reutiliza la conexión TCP pero serializa peticiones (<em>head-of-line blocking</em>
+   a nivel de aplicación); HTTP/2 multiplexa varios <em>streams</em> sobre una única conexión TCP mediante
+   <em>frames</em> binarios, eliminando ese bloqueo a nivel HTTP (persiste a nivel TCP, resuelto en HTTP/3/QUIC).</p>
+</li>
+<li>
+<p><strong>Justifica por qué NIST SP 800-52 desaconseja TLS 1.0/1.1 en servicios de producción.</strong>
+   <em>Resolución:</em> Ausencia de cifrados AEAD, vulnerabilidad a BEAST y POODLE, y falta de <em>perfect forward
+   secrecy</em> obligatorio; PCI-DSS 4.0 y CCN-CERT los consideran no conformes desde 2021.</p>
+</li>
+<li>
+<p><strong>¿Qué aporta 0-RTT en TLS 1.3 y qué riesgo de seguridad introduce?</strong>
+   <em>Resolución:</em> Permite enviar datos de aplicación en el primer mensaje del handshake en reconexiones,
+   reduciendo latencia; el riesgo es la posibilidad de <em>replay attacks</em> sobre esos datos 0-RTT, por lo
+   que solo debe habilitarse para peticiones idempotentes (GET sin efectos secundarios).</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.indexes", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

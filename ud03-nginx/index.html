@@ -1,0 +1,1125 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../ud02-apache/">
+      
+      
+        <link rel="next" href="../tech/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>UD3 · Servidores de Alto Rendimiento: Nginx - IAW · Implantación de Aplicaciones Web</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ud3-servidores-de-alto-rendimiento-nginx" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="IAW · Implantación de Aplicaciones Web" class="md-header__button md-logo" aria-label="IAW · Implantación de Aplicaciones Web" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 19h1a1 1 0 0 1 1 1h7v2h-7a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1H2v-2h7a1 1 0 0 1 1-1h1v-2H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-7zM4 3h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1m5 4h1V5H9zm0 8h1v-2H9zM5 5v2h2V5zm0 8v2h2v-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IAW · Implantación de Aplicaciones Web
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UD3 · Servidores de Alto Rendimiento: Nginx
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Pasar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Pasar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Pasar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Pasar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="IAW · Implantación de Aplicaciones Web" class="md-nav__button md-logo" aria-label="IAW · Implantación de Aplicaciones Web" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 19h1a1 1 0 0 1 1 1h7v2h-7a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1H2v-2h7a1 1 0 0 1 1-1h1v-2H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-7zM4 3h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1m5 4h1V5H9zm0 8h1v-2H9zM5 5v2h2V5zm0 8v2h2v-2z"/></svg>
+
+    </a>
+    IAW · Implantación de Aplicaciones Web
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1er Trimestre
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1er Trimestre
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ud01-arquitectura-web-ssl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD1 · Arquitectura Web, Protocolos y SSL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ud02-apache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD2 · Servidores Web Clásicos: Apache
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD3 · Servidores de Alto Rendimiento: Nginx
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD3 · Servidores de Alto Rendimiento: Nginx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-fundamentos-teoricos-y-arquitectura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 1. Fundamentos Teóricos y Arquitectura
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📖 1. Fundamentos Teóricos y Arquitectura">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-que-es-un-proxy-inverso-y-por-que-necesitamos-uno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 ¿Qué es un proxy inverso y por qué necesitamos uno?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-por-que-nginx-es-mas-eficiente-que-el-modelo-por-proceso-de-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 ¿Por qué Nginx es más eficiente que el modelo por proceso de Apache?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-lo-que-el-backend-deja-de-ver-al-estar-detras-de-un-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Lo que el backend deja de "ver" al estar detrás de un proxy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-instalacion-configuracion-avanzada-y-hardening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ 2. Instalación, Configuración Avanzada y Hardening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-laboratorio-practico-dirigido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ 3. Laboratorio Práctico Dirigido
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-seguridad-logs-y-optimizacion-de-rendimiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛡️ 4. Seguridad, Logs y Optimización de Rendimiento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-preguntas-y-casos-de-autoevaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ 5. Preguntas y Casos de Autoevaluación
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../tech/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referencia Tecnológica
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referencia Tecnológica
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tech/http-tls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTTP / TLS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tech/apache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apache
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tech/nginx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nginx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-fundamentos-teoricos-y-arquitectura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 1. Fundamentos Teóricos y Arquitectura
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📖 1. Fundamentos Teóricos y Arquitectura">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-que-es-un-proxy-inverso-y-por-que-necesitamos-uno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 ¿Qué es un proxy inverso y por qué necesitamos uno?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-por-que-nginx-es-mas-eficiente-que-el-modelo-por-proceso-de-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 ¿Por qué Nginx es más eficiente que el modelo por proceso de Apache?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-lo-que-el-backend-deja-de-ver-al-estar-detras-de-un-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Lo que el backend deja de "ver" al estar detrás de un proxy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-instalacion-configuracion-avanzada-y-hardening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ 2. Instalación, Configuración Avanzada y Hardening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-laboratorio-practico-dirigido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ 3. Laboratorio Práctico Dirigido
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-seguridad-logs-y-optimizacion-de-rendimiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛡️ 4. Seguridad, Logs y Optimización de Rendimiento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-preguntas-y-casos-de-autoevaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ 5. Preguntas y Casos de Autoevaluación
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ud3-servidores-de-alto-rendimiento-nginx">UD3: Servidores de Alto Rendimiento: Nginx</h1>
+<div class="admonition info">
+<p class="admonition-title">Ficha Técnica y Alcance de la Unidad</p>
+<ul>
+<li><strong>Carga Lectiva:</strong> 4 horas presenciales</li>
+<li><strong>Resultados de Aprendizaje:</strong> RA1 (criterios g, h, i)</li>
+<li><strong>Tecnologías Involucradas:</strong> <a href="../tech/nginx/">Nginx</a></li>
+<li><strong>Referencias y Estándares:</strong> CIS Nginx Benchmark, OWASP Secure Headers Project, RFC 7239 (X-Forwarded-For)</li>
+</ul>
+</div>
+<hr />
+<h2 id="1-fundamentos-teoricos-y-arquitectura">📖 1. Fundamentos Teóricos y Arquitectura</h2>
+<h3 id="11-que-es-un-proxy-inverso-y-por-que-necesitamos-uno">1.1 ¿Qué es un proxy inverso y por qué necesitamos uno?</h3>
+<p>Un <strong>proxy</strong> es un intermediario que recibe peticiones en nombre de otro. Ya conoces el "proxy
+directo" (habitual en institutos/empresas): un servidor por el que <em>el cliente</em> pasa para salir a
+Internet, normalmente para filtrar contenido. Un <strong>proxy inverso</strong> hace lo contrario: se coloca
+delante <em>del servidor</em>, y es el propio servidor el que oculta su arquitectura interna detrás de él.</p>
+<p>Imagina la recepción de un hotel: los huéspedes (clientes) siempre hablan con la recepción
+(proxy inverso), nunca directamente con el departamento de limpieza, mantenimiento o cocina
+(servidores internos). La recepción decide a qué departamento redirigir cada petición, y el huésped
+ni siquiera necesita saber cuántos departamentos hay ni dónde están físicamente.</p>
+<p>En nuestra arquitectura, Nginx cumplirá ese papel: recibirá <strong>todas</strong> las peticiones de Internet,
+terminará el cifrado TLS ahí mismo, y decidirá si servir un fichero estático directamente o reenviar
+la petición a otro programa interno (Apache, o en UD5 una aplicación Python) que no está expuesto
+directamente a Internet.</p>
+<h3 id="12-por-que-nginx-es-mas-eficiente-que-el-modelo-por-proceso-de-apache">1.2 ¿Por qué Nginx es más eficiente que el modelo por proceso de Apache?</h3>
+<p>En UD2 vimos que Apache puede usar un proceso o un hilo por cada conexión. Nginx sigue un enfoque
+distinto: un modelo <strong>asíncrono orientado a eventos</strong>. En vez de "un trabajador dedicado por
+cliente", Nginx tiene un número reducido de procesos <em>worker</em> que van atendiendo miles de conexiones
+sin bloquearse esperando a ninguna de ellas — de forma parecida a un único camarero muy ágil que va
+tomando nota en varias mesas mientras la cocina prepara cada plato, en vez de un camarero fijo
+esperando parado junto a cada mesa hasta que su plato esté listo.</p>
+<p>Técnicamente, esto se apoya en mecanismos del kernel de Linux como <code>epoll</code>, que permiten a un
+programa preguntar "¿hay alguna de estas mil conexiones con datos nuevos?" de forma muy eficiente, en
+vez de tener que revisarlas una a una constantemente.</p>
+<pre class="mermaid"><code>graph LR
+    Internet --&gt;|443| N[Nginx: TLS + estáticos]
+    N --&gt;|proxy_pass /app| A[Apache/Gunicorn backend]
+    N --&gt;|try_files| S[/var/www/static]</code></pre>
+<p>Esta arquitectura es idónea como <strong>proxy inverso / balanceador</strong> delante de Apache, PHP-FPM o
+aplicaciones Python (Gunicorn/Uvicorn, ver UD5), terminando TLS y sirviendo estático de forma muy
+eficiente sin sobrecargar a los servidores de aplicación con ese trabajo.</p>
+<h3 id="13-lo-que-el-backend-deja-de-ver-al-estar-detras-de-un-proxy">1.3 Lo que el backend deja de "ver" al estar detrás de un proxy</h3>
+<p>Cuando Nginx reenvía una petición al backend, esa conexión interna es <em>nueva</em>: el backend recibiría
+como IP de origen la del propio Nginx, no la del cliente real, salvo que se lo digamos explícitamente
+mediante cabeceras HTTP adicionales (esto se resuelve con <code>X-Forwarded-*</code>, que veremos en la
+configuración). Es importante entenderlo bien porque es una fuente de errores muy habitual: un log de
+acceso del backend que muestre siempre la misma IP casi siempre significa que faltan esas cabeceras.</p>
+<h2 id="2-instalacion-configuracion-avanzada-y-hardening">⚙️ 2. Instalación, Configuración Avanzada y Hardening</h2>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Instalación desde el repositorio oficial de Nginx</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://nginx.org/keys/nginx_signing.key<span class="w"> </span><span class="p">|</span><span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/usr/share/keyrings/nginx.gpg
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb [signed-by=/usr/share/keyrings/nginx.gpg] http://nginx.org/packages/ubuntu </span><span class="k">$(</span>lsb_release<span class="w"> </span>-cs<span class="k">)</span><span class="s2"> nginx&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>&gt;<span class="w"> </span>/etc/apt/sources.list.d/nginx.list
+apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx
+</code></pre></div></td></tr></table></div>
+<p>Usamos el repositorio oficial de Nginx (en vez del paquete de Ubuntu/Debian) para tener siempre la
+versión más reciente con los últimos parches de seguridad; <code>gpg --dearmor</code> importa la clave con la
+que el repositorio firma sus paquetes, para que <code>apt</code> pueda verificar que no han sido manipulados.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">/etc/nginx/conf.d/app-segura.conf</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">443</span><span class="w"> </span><span class="s">ssl</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">http2</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">app.iaw.local</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">ssl_certificate</span><span class="w">     </span><span class="s">/etc/ssl/lab/lab.crt</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">ssl_certificate_key</span><span class="w"> </span><span class="s">/etc/ssl/lab/lab.key</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">ssl_protocols</span><span class="w"> </span><span class="s">TLSv1.3</span><span class="w"> </span><span class="s">TLSv1.2</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">ssl_session_cache</span><span class="w"> </span><span class="s">shared:SSL:10m</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Strict-Transport-Security</span><span class="w"> </span><span class="s">&quot;max-age=63072000</span><span class="p">;</span><span class="w"> </span><span class="kn">includeSubDomains&quot;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Content-Type-Options</span><span class="w"> </span><span class="s">&quot;nosniff&quot;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Frame-Options</span><span class="w"> </span><span class="s">&quot;SAMEORIGIN&quot;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://127.0.0.1:8080</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Proto</span><span class="w"> </span><span class="nv">$scheme</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/static/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">alias</span><span class="w"> </span><span class="s">/var/www/app/static/</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">expires</span><span class="w"> </span><span class="s">30d</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">access_log</span><span class="w"> </span><span class="no">off</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">app.iaw.local</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">return</span><span class="w"> </span><span class="mi">301</span><span class="w"> </span><span class="s">https://</span><span class="nv">$host$request_uri</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Cada bloque <code>location</code> le dice a Nginx cómo tratar peticiones según la ruta pedida: el bloque <code>/</code>
+reenvía (<code>proxy_pass</code>) todo lo que no sea explícitamente estático hacia el backend interno en el
+puerto 8080 (por ejemplo, el Apache configurado en UD2); el bloque <code>/static/</code> sirve directamente los
+ficheros de ese directorio sin pasar por el backend, mucho más rápido para imágenes/CSS/JS. El
+segundo bloque <code>server</code> (puerto 80) simplemente redirige cualquier visita sin cifrar hacia la versión
+HTTPS (<code>301</code> = redirección permanente).</p>
+<p><code>X-Forwarded-For</code>/<code>X-Forwarded-Proto</code> (RFC 7239) son imprescindibles para que el backend conozca la IP
+y esquema originales del cliente cuando Nginx actúa como proxy inverso; sin ellos, logs y control de
+acceso del backend verían siempre <code>127.0.0.1</code>, como se explicaba en el punto 1.3.</p>
+<div class="admonition example">
+<p class="admonition-title">Laboratorio / Despliegue Real</p>
+<p>Plataforma integrada de prueba: <code>nginx -t</code> valida sintaxis sin recargar el servicio en producción.</p>
+</div>
+<h2 id="3-laboratorio-practico-dirigido">🛠️ 3. Laboratorio Práctico Dirigido</h2>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Validar y recargar sin cortar conexiones activas</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>nginx<span class="w"> </span>-t<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+curl<span class="w"> </span>-I<span class="w"> </span>http://app.iaw.local/<span class="w">        </span><span class="c1"># Debe responder 301 -&gt; https</span>
+curl<span class="w"> </span>-Ik<span class="w"> </span>https://app.iaw.local/<span class="w">      </span><span class="c1"># Debe responder 200 con cabeceras HSTS</span>
+</code></pre></div></td></tr></table></div>
+<p><code>systemctl reload</code> (a diferencia de <code>restart</code>) aplica la nueva configuración sin cerrar las
+conexiones ya activas: Nginx termina de atender las peticiones en curso con la configuración antigua
+y empieza a usar la nueva para las siguientes — imprescindible en un servidor en producción con
+usuarios conectados.</p>
+<h2 id="4-seguridad-logs-y-optimizacion-de-rendimiento">🛡️ 4. Seguridad, Logs y Optimización de Rendimiento</h2>
+<ul>
+<li><code>worker_processes auto;</code> y <code>worker_rlimit_nofile 65535;</code> en <code>nginx.conf</code>: alinea el nº de workers con
+  los núcleos de CPU y eleva el límite de descriptores de fichero del kernel por proceso, evitando
+  <code>Too many open files</code> bajo alta concurrencia.</li>
+<li>Logs: <code>/var/log/nginx/access.log</code> y <code>error.log</code>; formato JSON recomendado para ingesta en SIEM.</li>
+<li><code>limit_req_zone</code> mitiga <em>brute-force</em> y <em>DoS</em> de capa 7 sin depender del backend.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Rate limiting básico</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">limit_req_zone</span><span class="w"> </span><span class="nv">$binary_remote_addr</span><span class="w"> </span><span class="s">zone=login:10m</span><span class="w"> </span><span class="s">rate=5r/s</span><span class="p">;</span>
+<span class="k">location</span><span class="w"> </span><span class="s">/login</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">limit_req</span><span class="w"> </span><span class="s">zone=login</span><span class="w"> </span><span class="s">burst=10</span><span class="w"> </span><span class="s">nodelay</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://127.0.0.1:8080</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Esta configuración limita a 5 peticiones por segundo por IP (<code>rate=5r/s</code>) a la ruta <code>/login</code>,
+permitiendo un pequeño margen de ráfaga (<code>burst=10</code>) antes de empezar a rechazar peticiones —
+mitigando intentos automatizados de adivinar contraseñas sin bloquear a un usuario legítimo que
+simplemente se equivoca una vez.</p>
+<h2 id="5-preguntas-y-casos-de-autoevaluacion">❓ 5. Preguntas y Casos de Autoevaluación</h2>
+<ol>
+<li>
+<p><strong>¿Por qué Nginx soporta más conexiones concurrentes con menos RAM que Apache prefork?</strong>
+   <em>Resolución:</em> Modelo asíncrono orientado a eventos (un worker atiende miles de conexiones no
+   bloqueantes) frente a un proceso por conexión con su propio <em>stack</em> de memoria.</p>
+</li>
+<li>
+<p><strong>Un cliente detrás del proxy ve siempre la IP del servidor en los logs del backend. ¿Causa?</strong>
+   <em>Resolución:</em> Faltan las cabeceras <code>X-Real-IP</code>/<code>X-Forwarded-For</code> en el bloque <code>proxy_pass</code>, o el
+   backend no está configurado para confiar en <code>X-Forwarded-*</code> (p. ej. <code>RemoteIPHeader</code> en Apache).</p>
+</li>
+<li>
+<p><strong>¿Qué diferencia hay entre <code>alias</code> y <code>root</code> en un bloque <code>location</code> de Nginx?</strong>
+   <em>Resolución:</em> <code>root</code> concatena la ruta del <code>location</code> a la ruta base; <code>alias</code> sustituye la ruta del
+   <code>location</code> completa por la especificada — error común al servir subdirectorios estáticos.</p>
+</li>
+<li>
+<p><strong>Justifica el uso de <code>limit_req_zone</code> frente a bloquear IPs manualmente.</strong>
+   <em>Resolución:</em> Es dinámico y basado en tasa (r/s) sin mantenimiento de listas; complementa (no
+   sustituye) un WAF/fail2ban para bloqueo persistente tras umbral de abuso.</p>
+</li>
+<li>
+<p><strong>¿Qué aporta <code>worker_rlimit_nofile</code> respecto al límite por defecto del sistema?</strong>
+   <em>Resolución:</em> El límite de descriptores de fichero por proceso del kernel (<code>ulimit -n</code>) suele ser
+   1024 por defecto; en un proxy con miles de conexiones simultáneas hay que elevarlo explícitamente
+   o Nginx rechazará nuevas conexiones con <code>EMFILE</code>.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.indexes", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
