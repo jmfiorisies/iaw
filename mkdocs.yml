@@ -21,16 +21,16 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
-      accent: deep orange
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-7
         name: Pasar a modo oscuro
 
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: indigo
-      accent: deep orange
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-4
         name: Pasar a modo claro
@@ -63,6 +63,33 @@ extra_css:
 
 plugins:
   - search
+  - redirects:
+      redirect_maps:
+        'tech/apache.md': 'https://jmfiorisies.github.io/tech/apache/'
+        'tech/docker.md': 'https://jmfiorisies.github.io/tech/docker/'
+        'tech/git.md': 'https://jmfiorisies.github.io/tech/git/'
+        'tech/github-actions.md': 'https://jmfiorisies.github.io/tech/github-actions/'
+        'tech/http-tls.md': 'https://jmfiorisies.github.io/tech/http-tls/'
+        'tech/index.md': 'https://jmfiorisies.github.io/tech/'
+        'tech/mariadb.md': 'https://jmfiorisies.github.io/tech/mariadb/'
+        'tech/nextcloud.md': 'https://jmfiorisies.github.io/tech/nextcloud/'
+        'tech/nginx.md': 'https://jmfiorisies.github.io/tech/nginx/'
+        'tech/php-fpm.md': 'https://jmfiorisies.github.io/tech/php-fpm/'
+        'tech/python.md': 'https://jmfiorisies.github.io/tech/python/'
+        'tech/wordpress.md': 'https://jmfiorisies.github.io/tech/wordpress/'
+        'tech/wp-cli.md': 'https://jmfiorisies.github.io/tech/wp-cli/'
+        'ud01-arquitectura-web-ssl.md': 'unidades/ud01.md'
+        'ud02-apache.md': 'unidades/ud02.md'
+        'ud03-nginx.md': 'unidades/ud03.md'
+        'ud04-php.md': 'unidades/ud04.md'
+        'ud05-python.md': 'unidades/ud05.md'
+        'ud06-mariadb-git.md': 'unidades/ud06.md'
+        'ud07-wordpress.md': 'unidades/ud07.md'
+        'ud08-wpcli.md': 'unidades/ud08.md'
+        'ud09-nextcloud.md': 'unidades/ud09.md'
+        'ud10-apis-saas.md': 'unidades/ud10.md'
+        'ud11-docker.md': 'unidades/ud11.md'
+        'ud12-cicd-paas.md': 'unidades/ud12.md'
 
 nav:
   - Inicio: index.md
