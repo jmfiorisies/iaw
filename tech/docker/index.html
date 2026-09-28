@@ -9,6 +9,8 @@
       
       
       
+        <link rel="prev" href="../nginx/">
+      
       
       
         
@@ -19,7 +21,7 @@
     
     
       
-        <title>Docker y Docker Compose — Referencia Tecnológica - IAW · Implantación de Aplicaciones Web</title>
+        <title>Docker - IAW · Implantación de Aplicaciones Web</title>
       
     
     
@@ -72,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#docker-y-docker-compose-referencia-tecnologica" class="md-skip">
+        <a href="#docker" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -108,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Docker y Docker Compose — Referencia Tecnológica
+              Docker
             
           </span>
         </div>
@@ -232,7 +234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../index.md" class="md-nav__link">
         
   
   
@@ -409,6 +411,8 @@
       
   
   
+    
+  
   
   
     
@@ -424,6 +428,8 @@
       
         
       
+        
+      
     
     
     
@@ -433,13 +439,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -467,7 +471,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -564,6 +568,535 @@
 
               
             
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-contenedores-vs-virtualizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. Contenedores vs. Virtualización
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Qué es Docker
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-definiciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Definiciones
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-flujo-de-trabajo-elementos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Flujo de Trabajo: Elementos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-que-es-un-fichero-dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. ¿Qué es un Fichero Dockerfile?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. ¿Qué es un Fichero Dockerfile?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comandos-basicos-de-un-dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comandos básicos de un Dockerfile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-vs-cmd-vs-entrypoint-la-confusion-mas-comun" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RUN vs. CMD vs. ENTRYPOINT — la confusión más común
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de Dockerfile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-companero-inseparable-del-dockerfile-dockerignore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El Compañero Inseparable del Dockerfile: .dockerignore
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-que-es-una-imagen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. ¿Qué es una Imagen?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. ¿Qué es una Imagen?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#las-imagenes-se-construyen-por-capas-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Las Imágenes se Construyen por Capas (Layers)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-que-es-un-contenedor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. ¿Qué es un Contenedor?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-comandos-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Comandos Docker
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Comandos Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comandos-basicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comandos básicos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#los-flags-mas-usados-de-docker-run-explicados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Los Flags Más Usados de docker run, Explicados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapeo-de-puertos-p-por-que-funciona-localhost-en-tu-navegador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapeo de Puertos (-p) — por qué funciona localhost en tu navegador
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comandos-sobre-un-contenedor-concreto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comandos sobre un contenedor concreto
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Logs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-diagrama-de-trabajo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Diagrama de Trabajo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-docker-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Docker Hub
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-docker-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Docker Compose
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Docker Compose">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-que-es-exactamente-docker-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1. ¿Qué es exactamente Docker Compose?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-anatomia-de-un-docker-composeyml-explicada-linea-a-linea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2. Anatomía de un docker-compose.yml, explicada línea a línea
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-dos-tipos-de-volumes-muy-distintos-y-uno-es-justo-lo-que-usa-tu-dev-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3. Dos tipos de volumes muy distintos — y uno es justo lo que usa tu Dev Container
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114-como-se-comunican-los-servicios-entre-si" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4. Cómo se comunican los servicios entre sí
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#115-comandos-de-docker-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5. Comandos de Docker Compose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#116-el-error-mas-comun-depends_on-no-espera-a-que-el-servicio-este-listo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6. El error más común: depends_on no espera a que el servicio esté "listo"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-docker-mas-alla-de-este-modulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Docker Más Allá de Este Módulo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Docker Más Allá de Este Módulo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-desktop-como-lo-vas-a-instalar-tu-mismo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker Desktop — cómo lo vas a instalar tú mismo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-siguiente-escalon-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El Siguiente Escalón: Kubernetes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#donde-te-lo-vas-a-encontrar-en-la-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dónde te lo vas a encontrar en la práctica
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-redes-en-docker-topologias-multi-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Redes en Docker: Topologías Multi-Red
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Redes en Docker: Topologías Multi-Red">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-el-comportamiento-por-defecto-el-punto-de-partida-mental" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1. El comportamiento por defecto (el punto de partida mental)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-redes-personalizadas-el-primer-nivel-de-segmentacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2. Redes personalizadas: el primer nivel de segmentación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-la-trampa-de-la-ip-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3. La trampa de la IP .1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-internal-true-que-hace-de-verdad-y-que-no" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4. internal: true — qué hace de verdad (y qué no)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#135-por-que-hacen-falta-rutas-explicitas-y-net_admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.5. Por qué hacen falta rutas explícitas y NET_ADMIN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#136-como-se-resuelven-los-nombres-entre-contenedores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.6. Cómo se resuelven los nombres entre contenedores
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -598,10 +1131,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#arquitectura-y-fundamentos" class="md-nav__link">
+  <a href="#0-contenedores-vs-virtualizacion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📌 Arquitectura y Fundamentos
+        0. Contenedores vs. Virtualización
       
     </span>
   </a>
@@ -609,10 +1142,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ficheros-de-configuracion-estructura-de-directorios-y-rutas-clave" class="md-nav__link">
+  <a href="#1-que-es-docker" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ⚙️ Ficheros de Configuración, Estructura de Directorios y Rutas Clave
+        1. Qué es Docker
       
     </span>
   </a>
@@ -620,10 +1153,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comandos-de-administracion-cheat-sheet-cli" class="md-nav__link">
+  <a href="#2-definiciones" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ Comandos de Administración / Cheat Sheet CLI
+        2. Definiciones
       
     </span>
   </a>
@@ -631,10 +1164,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#hardening-seguridad-y-optimizacion" class="md-nav__link">
+  <a href="#3-flujo-de-trabajo-elementos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛡️ Hardening, Seguridad y Optimización
+        3. Flujo de Trabajo: Elementos
       
     </span>
   </a>
@@ -642,13 +1175,412 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#diagnostico-logs-y-troubleshooting" class="md-nav__link">
+  <a href="#4-que-es-un-fichero-dockerfile" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🩺 Diagnóstico, Logs y Troubleshooting
+        4. ¿Qué es un Fichero Dockerfile?
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="4. ¿Qué es un Fichero Dockerfile?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comandos-basicos-de-un-dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comandos básicos de un Dockerfile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-vs-cmd-vs-entrypoint-la-confusion-mas-comun" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RUN vs. CMD vs. ENTRYPOINT — la confusión más común
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de Dockerfile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-companero-inseparable-del-dockerfile-dockerignore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El Compañero Inseparable del Dockerfile: .dockerignore
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-que-es-una-imagen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. ¿Qué es una Imagen?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. ¿Qué es una Imagen?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#las-imagenes-se-construyen-por-capas-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Las Imágenes se Construyen por Capas (Layers)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-que-es-un-contenedor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. ¿Qué es un Contenedor?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-comandos-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Comandos Docker
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Comandos Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comandos-basicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comandos básicos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#los-flags-mas-usados-de-docker-run-explicados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Los Flags Más Usados de docker run, Explicados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapeo-de-puertos-p-por-que-funciona-localhost-en-tu-navegador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapeo de Puertos (-p) — por qué funciona localhost en tu navegador
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comandos-sobre-un-contenedor-concreto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comandos sobre un contenedor concreto
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Logs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-diagrama-de-trabajo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Diagrama de Trabajo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-docker-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Docker Hub
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-docker-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Docker Compose
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Docker Compose">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-que-es-exactamente-docker-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1. ¿Qué es exactamente Docker Compose?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-anatomia-de-un-docker-composeyml-explicada-linea-a-linea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2. Anatomía de un docker-compose.yml, explicada línea a línea
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-dos-tipos-de-volumes-muy-distintos-y-uno-es-justo-lo-que-usa-tu-dev-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3. Dos tipos de volumes muy distintos — y uno es justo lo que usa tu Dev Container
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114-como-se-comunican-los-servicios-entre-si" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4. Cómo se comunican los servicios entre sí
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#115-comandos-de-docker-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5. Comandos de Docker Compose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#116-el-error-mas-comun-depends_on-no-espera-a-que-el-servicio-este-listo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6. El error más común: depends_on no espera a que el servicio esté "listo"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-docker-mas-alla-de-este-modulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Docker Más Allá de Este Módulo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Docker Más Allá de Este Módulo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-desktop-como-lo-vas-a-instalar-tu-mismo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker Desktop — cómo lo vas a instalar tú mismo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-siguiente-escalon-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El Siguiente Escalón: Kubernetes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#donde-te-lo-vas-a-encontrar-en-la-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dónde te lo vas a encontrar en la práctica
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-redes-en-docker-topologias-multi-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Redes en Docker: Topologías Multi-Red
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Redes en Docker: Topologías Multi-Red">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-el-comportamiento-por-defecto-el-punto-de-partida-mental" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1. El comportamiento por defecto (el punto de partida mental)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-redes-personalizadas-el-primer-nivel-de-segmentacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2. Redes personalizadas: el primer nivel de segmentación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-la-trampa-de-la-ip-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3. La trampa de la IP .1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-internal-true-que-hace-de-verdad-y-que-no" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4. internal: true — qué hace de verdad (y qué no)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#135-por-que-hacen-falta-rutas-explicitas-y-net_admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.5. Por qué hacen falta rutas explícitas y NET_ADMIN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#136-como-se-resuelven-los-nombres-entre-contenedores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.6. Cómo se resuelven los nombres entre contenedores
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -669,58 +1601,712 @@
 
 
 
-<h1 id="docker-y-docker-compose-referencia-tecnologica">Docker y Docker Compose — Referencia Tecnológica</h1>
-<h2 id="arquitectura-y-fundamentos">📌 Arquitectura y Fundamentos</h2>
-<p>Contenerización basada en <em>namespaces</em> (aislamiento de PID, red, filesystem) y <em>cgroups</em> (límites de
-recursos) del kernel Linux. Imágenes en capas <em>overlay</em> inmutables (especificación OCI).</p>
-<h2 id="ficheros-de-configuracion-estructura-de-directorios-y-rutas-clave">⚙️ Ficheros de Configuración, Estructura de Directorios y Rutas Clave</h2>
+<h1 id="docker">Docker</h1>
+<h2 id="0-contenedores-vs-virtualizacion">0. Contenedores vs. Virtualización</h2>
+<p>Docker no es una máquina virtual, aunque a primera vista lo parezca. La diferencia está en
+qué capa se virtualiza:</p>
+<p><img alt="Contenedores vs Máquinas Virtuales" src="../img/contenedores-vs-vm.jpg" /></p>
+<p>Cada máquina virtual arrastra un <strong>Guest OS</strong> completo propio — de ahí que pese gigas y
+tarde minutos en arrancar. Los contenedores de la izquierda, en cambio, <strong>comparten el mismo
+Guest OS</strong> a través del motor de Docker — solo empaquetan la app y sus binarios/librerías,
+de ahí que pesen megas y arranquen en segundos. El de la derecha (App D) representa una app
+sin contenedor, corriendo directamente sobre el Guest OS, para que se vea el contraste.</p>
+<hr />
+<h2 id="1-que-es-docker">1. Qué es Docker</h2>
+<p><strong>Docker</strong> es una plataforma de software que permite crear, probar e implementar
+aplicaciones rápidamente.</p>
+<p>Si queremos ejecutar un servicio, tradicionalmente hay que instalarlo directamente en una
+máquina Linux o Windows. Docker proporciona ese mismo servicio <strong>sin instalarlo en la
+máquina anfitriona</strong>, lo que nos permite abstraernos completamente del entorno — el
+servicio y sus dependencias viajan siempre juntos, empaquetados.</p>
+<div class="admonition example">
+<p class="admonition-title">Aplicado a DWEC</p>
+<p>En este módulo, Node, npm y Vite corren dentro de un contenedor Docker — no están
+instalados en tu equipo. VS Code se conecta directamente dentro de ese contenedor
+(extensión Dev Containers), así que el terminal integrado que usas cada día <strong>ya es el
+terminal del contenedor</strong>. Cuando ejecutas <code>npm run dev</code> y luego abres <code>localhost:5173</code>
+en tu navegador, lo que está pasando por debajo es justo lo que se explica en la sección
+de <strong>mapeo de puertos</strong>, más abajo.</p>
+</div>
+<p><img alt="Comparativa de arquitectura: runtime tradicional vs Docker" src="../img/docker-arquitectura-comparativa.jpg" /></p>
+<p>A la izquierda, cada aplicación necesita su propio <em>runtime</em> instalado directamente sobre el
+sistema operativo. A la derecha, Docker se sitúa como una capa única entre el sistema
+operativo anfitrión y todas las aplicaciones — cada una trae su propio entorno (Node, Go,
+.NET...) empaquetado dentro de su contenedor, sin tener que instalar nada de eso en el host.</p>
+<div class="admonition tip">
+<p class="admonition-title">Fortalezas</p>
+<ul>
+<li><strong>Ligereza:</strong> un contenedor, por lo general, pesa muy poco (ej. <code>nginx:alpine</code> son
+  solo 15 MB).</li>
+<li><strong>Repositorios y repetibilidad:</strong> facilidad para compartir contenedores en
+  repositorios y moverlos entre entornos de desarrollo. Se crean a través de un archivo
+  <code>Dockerfile</code>.</li>
+<li><strong>Orquestación:</strong> junto a los contenedores existen multitud de herramientas para su
+  monitorización, despliegue, autoescalado, etc.</li>
+<li><strong>Entorno local de desarrollo:</strong> posibilidad de levantar entornos con facilidad, con
+  varios contenedores trabajando entre ellos.</li>
+<li><strong>Entornos de ejecución de pruebas:</strong> entornos dinámicos con autoescalado para
+  ejecución de pruebas unitarias o de integración.</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Debilidades</p>
+<ul>
+<li><strong>Dificultad:</strong> migrar aplicaciones enteras a Docker puede suponer un incremento de la
+  complejidad de mantenimiento.</li>
+<li><strong>Seguridad:</strong> al compartir el kernel del host, existe la posibilidad de que una
+  vulnerabilidad en el mismo afecte a todos los contenedores que corren sobre él.</li>
+</ul>
+</div>
+<hr />
+<h2 id="2-definiciones">2. Definiciones</h2>
 <table>
 <thead>
 <tr>
-<th>Ruta</th>
-<th>Propósito</th>
+<th>Concepto</th>
+<th>Descripción</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>Dockerfile</code></td>
-<td>Receta de construcción de la imagen</td>
+<td><strong>Image (Imagen)</strong></td>
+<td>Un archivo inerte e inmutable que es básicamente un <em>snapshot</em> de un contenedor. Similar al concepto de ISO. Se versionan.</td>
 </tr>
 <tr>
-<td><code>docker-compose.yml</code></td>
-<td>Definición declarativa del stack multi-contenedor</td>
+<td><strong>Dockerfile</strong></td>
+<td>El archivo en el que se definen las instrucciones necesarias para crear una imagen de Docker.</td>
 </tr>
 <tr>
-<td><code>/var/lib/docker/</code></td>
-<td>Almacenamiento de imágenes/contenedores en el host</td>
+<td><strong>Container (Contenedor)</strong></td>
+<td>Una imagen de Docker en funcionamiento — la imagen ejecutándose.</td>
 </tr>
 <tr>
-<td><code>.dockerignore</code></td>
-<td>Exclusión de ficheros del contexto de build</td>
+<td><strong>Registry</strong></td>
+<td>Repositorio donde se suben las imágenes de Docker. Docker ofrece <strong>DockerHub</strong> para uso gratuito.</td>
+</tr>
+<tr>
+<td><strong>Volumes</strong></td>
+<td>El almacenamiento de un contenedor es efímero: cuando el contenedor se para, los datos internos desaparecen. Docker permite montar volúmenes que persisten más allá de la vida del contenedor.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="comandos-de-administracion-cheat-sheet-cli">🛠️ Comandos de Administración / Cheat Sheet CLI</h2>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>app:tag<span class="w"> </span>.
-docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>--build<span class="w"> </span>/<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>down<span class="w"> </span>-v
-docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>&lt;servicio&gt;<span class="w"> </span>--tail<span class="o">=</span><span class="m">50</span>
-docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;contenedor&gt;<span class="w"> </span>sh
-docker<span class="w"> </span>stats<span class="w"> </span>--no-stream
-docker<span class="w"> </span>system<span class="w"> </span>prune<span class="w"> </span>-a<span class="w">              </span><span class="c1"># Limpieza de recursos no usados</span>
+<hr />
+<h2 id="3-flujo-de-trabajo-elementos">3. Flujo de Trabajo: Elementos</h2>
+<p><img alt="Flujo: Dockerfile, build, Docker Image, run, Docker Container" src="../img/flujo-dockerfile-imagen-contenedor.jpg" /></p>
+<p>Generamos un fichero <code>Dockerfile</code> para construir después una imagen. Una vez realizado este
+proceso, levantamos esa imagen para usar el servicio instalado en ella.</p>
+<hr />
+<h2 id="4-que-es-un-fichero-dockerfile">4. ¿Qué es un Fichero Dockerfile?</h2>
+<p>Es un simple archivo de texto con un conjunto de comandos o instrucciones. Estos
+comandos/instrucciones se ejecutan sucesivamente para realizar acciones sobre la imagen base
+y así crear una nueva imagen Docker.</p>
+<p><strong>Es un archivo sin extensión</strong> (se llama literalmente <code>Dockerfile</code>, sin <code>.txt</code> ni nada
+detrás).</p>
+<h3 id="comandos-basicos-de-un-dockerfile">Comandos básicos de un Dockerfile</h3>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FROM</code></td>
+<td>Define la imagen base que se utilizará para iniciar el proceso de compilación.</td>
+</tr>
+<tr>
+<td><code>WORKDIR</code></td>
+<td>Define el directorio de trabajo dentro del contenedor — todos los comandos siguientes (<code>RUN</code>, <code>COPY</code>, <code>CMD</code>...) se ejecutan relativos a esta carpeta.</td>
+</tr>
+<tr>
+<td><code>RUN</code></td>
+<td>Toma el comando y sus argumentos para ejecutarlo <strong>durante la construcción</strong> de la imagen.</td>
+</tr>
+<tr>
+<td><code>CMD</code></td>
+<td>Define el comando que se ejecuta al <strong>arrancar</strong> el contenedor — se puede sobrescribir fácilmente al lanzar <code>docker run</code>.</td>
+</tr>
+<tr>
+<td><code>ENTRYPOINT</code></td>
+<td>Define el comando que se ejecuta al arrancar el contenedor, igual que <code>CMD</code>, pero <strong>no se sobrescribe</strong> por accidente — pensado para contenedores con un único propósito claro.</td>
+</tr>
+<tr>
+<td><code>COPY</code> / <code>ADD</code></td>
+<td>Copia los archivos del origen al destino (dentro del contenedor).</td>
+</tr>
+<tr>
+<td><code>ENV</code></td>
+<td>Establece variables de entorno.</td>
+</tr>
+<tr>
+<td><code>EXPOSE</code></td>
+<td>Documenta qué puerto usa el servicio dentro del contenedor (no lo hace accesible por sí solo — ver mapeo de puertos más abajo).</td>
+</tr>
+</tbody>
+</table>
+<p>Documentación de referencia: <a href="https://docs.docker.com/engine/reference/builder/">docs.docker.com/engine/reference/builder</a></p>
+<h3 id="run-vs-cmd-vs-entrypoint-la-confusion-mas-comun"><code>RUN</code> vs. <code>CMD</code> vs. <code>ENTRYPOINT</code> — la confusión más común</h3>
+<div class="admonition warning">
+<p class="admonition-title">Los tres ejecutan algo, y por eso se confunden</p>
+<p>La diferencia real está en <strong>cuándo</strong>:</p>
+</div>
+<ul>
+<li><strong><code>RUN</code></strong> se ejecuta <strong>una vez, al construir la imagen</strong> (<code>docker build</code>). Sirve para dejar
+  cosas instaladas dentro de la imagen (ej. <code>RUN npm install</code>). No vuelve a ejecutarse nunca
+  más una vez la imagen está construida.</li>
+<li><strong><code>CMD</code></strong> y <strong><code>ENTRYPOINT</code></strong> se ejecutan <strong>cada vez que arranca un contenedor</strong> a partir de
+  esa imagen (<code>docker run</code>). No instalan nada — lanzan el proceso principal del contenedor.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:20</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+<span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>install<span class="w">          </span>#<span class="w"> </span>Se<span class="w"> </span>ejecuta<span class="w"> </span>UNA<span class="w"> </span>VEZ,<span class="w"> </span>al<span class="w"> </span>hacer<span class="w"> </span><span class="s2">&quot;docker build&quot;</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;npm&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;dev&quot;</span><span class="p">]</span><span class="w"> </span>#<span class="w"> </span>Se<span class="w"> </span>ejecuta<span class="w"> </span>CADA<span class="w"> </span>VEZ<span class="w"> </span>que<span class="w"> </span>se<span class="w"> </span>hace<span class="w"> </span><span class="s2">&quot;docker run&quot;</span>
 </code></pre></div>
-<h2 id="hardening-seguridad-y-optimizacion">🛡️ Hardening, Seguridad y Optimización</h2>
+<p><strong>La diferencia entre <code>CMD</code> y <code>ENTRYPOINT</code>:</strong> con <code>CMD</code>, si lanzas
+<code>docker run mi-imagen npm run build</code>, ese <code>npm run build</code> sustituye por completo al <code>CMD</code> del
+Dockerfile. Con <code>ENTRYPOINT</code>, en cambio, lo que escribas después en <code>docker run</code> se <strong>añade</strong>
+como argumento al <code>ENTRYPOINT</code>, no lo sustituye — se usa cuando quieres que el contenedor
+haga siempre lo mismo pase lo que pase. Para el día a día de este módulo, <code>CMD</code> es
+suficiente en la inmensa mayoría de los casos.</p>
+<h3 id="ejemplo-de-dockerfile">Ejemplo de Dockerfile</h3>
+<div class="highlight"><pre><span></span><code><span class="c"># Usa una imagen base de Apache</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">httpd:2.4</span>
+
+<span class="c"># Copia tus archivos de configuración personalizados de local al contenedor</span>
+<span class="c"># COPY ./mi-configuracion.conf /usr/local/apache2/conf/mi-configuracion.conf</span>
+
+<span class="c"># Puerto por defecto para Apache</span>
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">80</span>
+
+<span class="c"># Inicia el servidor Apache</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;httpd&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-D&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;FOREGROUND&quot;</span><span class="p">]</span>
+</code></pre></div>
+<h3 id="el-companero-inseparable-del-dockerfile-dockerignore">El Compañero Inseparable del Dockerfile: <code>.dockerignore</code></h3>
+<p>Cuando usas <code>COPY . .</code> para copiar tu proyecto al contenedor, Docker copia <strong>literalmente
+todo</strong> lo que haya en esa carpeta — incluida <code>node_modules</code> (que puede pesar cientos de MB y
+además puede tener binarios compilados para tu sistema operativo, no para el del
+contenedor), o la carpeta <code>.git</code> entera.</p>
+<p><code>.dockerignore</code> funciona exactamente como un <code>.gitignore</code>, pero para decirle a Docker qué
+<strong>no</strong> copiar:</p>
+<div class="highlight"><pre><span></span><code># .dockerignore
+node_modules
+.git
+.env
+*.log
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Por qué importa de verdad</p>
+<p>Sin él, tus builds son más lentos (copiar más datos de los necesarios), tu imagen final
+pesa mucho más de lo que debería, y en el peor caso puedes arrastrar un <code>node_modules</code>
+instalado en tu Windows/Mac dentro de un contenedor Linux, con dependencias que no
+funcionan ahí — justo el tipo de "en mi máquina funciona" que Docker existe para evitar.</p>
+</div>
+<hr />
+<h2 id="5-que-es-una-imagen">5. ¿Qué es una Imagen?</h2>
+<p>Una <strong>imagen de Docker</strong> es una plantilla de solo lectura que define un contenedor. La
+imagen contiene el código que se ejecutará, incluida cualquier definición para cualquier
+biblioteca o dependencia que ese código necesite.</p>
+<p>Docker tiene su propio repositorio de imágenes prediseñadas con servicios ya desarrollados,
+tales como: Apache, Nginx, Node.js, Redis...</p>
+<p>Repositorio de imágenes: <a href="https://hub.docker.com/">Docker Hub</a></p>
+<h3 id="las-imagenes-se-construyen-por-capas-layers">Las Imágenes se Construyen por Capas (<em>Layers</em>)</h3>
+<p>Cada instrucción de un <code>Dockerfile</code> (<code>FROM</code>, <code>RUN</code>, <code>COPY</code>...) no se ejecuta "de golpe": crea
+una <strong>capa</strong> independiente, y Docker guarda esa capa en caché.</p>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:20</span><span class="w">        </span><span class="c"># Capa 1</span>
+<span class="k">COPY</span><span class="w"> </span>package.json<span class="w"> </span>.<span class="w">  </span>#<span class="w"> </span>Capa<span class="w"> </span><span class="m">2</span>
+<span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>install<span class="w">       </span>#<span class="w"> </span>Capa<span class="w"> </span><span class="m">3</span><span class="w"> </span>--<span class="w"> </span>la<span class="w"> </span>más<span class="w"> </span>lenta,<span class="w"> </span>instala<span class="w"> </span>dependencias
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.<span class="w">              </span>#<span class="w"> </span>Capa<span class="w"> </span><span class="m">4</span><span class="w"> </span>--<span class="w"> </span>tu<span class="w"> </span>código,<span class="w"> </span>que<span class="w"> </span>cambia<span class="w"> </span>constantemente
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Por qué importa esto en la práctica</p>
+<p>Si solo cambias una línea de tu código (<code>COPY . .</code>, la última capa) y vuelves a construir
+la imagen, Docker <strong>reutiliza las capas anteriores desde caché</strong> en vez de reinstalar
+todas las dependencias otra vez — por eso el segundo <code>docker build</code> de un proyecto es
+mucho más rápido que el primero. Por esta misma razón, en un <code>Dockerfile</code> real siempre se
+copian primero los ficheros que cambian poco (<code>package.json</code>) y se instalan las
+dependencias, y solo al final se copia el resto del código — así los cambios en tu código
+no invalidan la capa (larga) de <code>npm install</code>.</p>
+</div>
+<hr />
+<h2 id="6-que-es-un-contenedor">6. ¿Qué es un Contenedor?</h2>
+<p>En base a la imagen generada anteriormente, un <strong>contenedor Docker</strong> es esa misma imagen
+<strong>ejecutada</strong>. Esto nos permite tener un entorno que puede estar basado en diferentes
+sistemas Linux (Debian, Ubuntu, CentOS...) con un servicio ejecutándose en su interior:
+Apache, Nginx, Redis, etc.</p>
+<p>Es similar a una máquina virtual de VirtualBox, pero mucho más ligero, puesto que no tiene
+instalado nada que no sea el propio servicio que está ofreciendo.</p>
+<div class="admonition danger">
+<p class="admonition-title">Los Contenedores son Efímeros — y esto sorprende a todo el mundo la primera vez</p>
+<p>En un ordenador normal, un archivo que creas se queda ahí hasta que tú lo borras. En un
+contenedor, <strong>no</strong> — si el contenedor se elimina, todo lo que hayas creado dentro de él
+(sin usar un volumen) desaparece con él, sin avisar ni pedir confirmación.</p>
+</div>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--name<span class="w"> </span>prueba<span class="w"> </span>ubuntu<span class="w"> </span>bash
+<span class="c1"># Dentro del contenedor:</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;hola&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/archivo.txt
+<span class="nb">exit</span>
+
+docker<span class="w"> </span>rm<span class="w"> </span>prueba<span class="w">          </span><span class="c1"># Eliminas el contenedor</span>
+docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--name<span class="w"> </span>prueba2<span class="w"> </span>ubuntu<span class="w"> </span>bash
+cat<span class="w"> </span>/archivo.txt<span class="w">          </span><span class="c1"># Error: No such file or directory -- ¡nunca existió aquí!</span>
+</code></pre></div>
+<p><code>/archivo.txt</code> vivía <strong>solo dentro de aquel contenedor concreto</strong>, no en la imagen <code>ubuntu</code>
+ni en ningún sitio persistente. Al borrar el contenedor, se borró con él. Esta es
+precisamente la razón de que existan los <strong>volúmenes</strong> (sección 2): cualquier dato que
+necesites que sobreviva a la vida de un contenedor concreto — una base de datos, ficheros
+subidos por un usuario — tiene que vivir en un volumen, nunca "suelto" dentro del contenedor.</p>
+<hr />
+<h2 id="7-comandos-docker">7. Comandos Docker</h2>
+<h3 id="comandos-basicos">Comandos básicos</h3>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>--version<span class="w">              </span><span class="c1"># Encontrar la versión instalada</span>
+docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>first-image<span class="w"> </span>.<span class="w"> </span><span class="c1"># Construye la imagen a partir del Dockerfile, con el nombre &quot;first-image&quot;</span>
+docker<span class="w"> </span>pull<span class="w"> </span>httpd<span class="w">             </span><span class="c1"># Descarga una imagen</span>
+docker<span class="w"> </span>images<span class="w">                 </span><span class="c1"># Lista las imágenes disponibles en local</span>
+docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>-d<span class="w"> </span>httpd<span class="w">       </span><span class="c1"># Crea un contenedor a partir de la imagen httpd (Apache)</span>
+docker<span class="w"> </span>ps<span class="w">                     </span><span class="c1"># Lista los contenedores en ejecución, con sus detalles</span>
+docker<span class="w"> </span>ps<span class="w"> </span>-a<span class="w">                  </span><span class="c1"># Lista TODOS los contenedores (en ejecución, salidos o parados)</span>
+docker<span class="w"> </span>network<span class="w"> </span>ls<span class="w">             </span><span class="c1"># Lista los detalles de toda la red del clúster</span>
+</code></pre></div>
+<h3 id="los-flags-mas-usados-de-docker-run-explicados">Los Flags Más Usados de <code>docker run</code>, Explicados</h3>
+<p>Verás estos flags constantemente y se combinan entre sí — merece la pena saber qué hace cada
+uno por separado:</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-d</code></td>
+<td>(<em>detached</em>) Arranca el contenedor en segundo plano y te devuelve el terminal al momento.</td>
+</tr>
+<tr>
+<td><code>-it</code></td>
+<td>Combinación de <code>-i</code> (<em>interactive</em>, mantiene abierta la entrada estándar) + <code>-t</code> (asigna una terminal). Úsalo cuando quieras <strong>escribir dentro</strong> del contenedor, como en una sesión de <code>bash</code>.</td>
+</tr>
+<tr>
+<td><code>--rm</code></td>
+<td>Elimina el contenedor automáticamente en cuanto termina de ejecutarse. Ideal para contenedores de usar y tirar (probar algo rápido), para no dejar basura acumulada.</td>
+</tr>
+<tr>
+<td><code>--name</code></td>
+<td>Le da un nombre concreto al contenedor, para no tener que usar el ID largo y aleatorio en comandos posteriores.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Importante</p>
+<p><code>-it</code> y <code>-d</code> casi nunca tienen sentido juntos en el mismo <code>docker run</code> — uno pide una
+terminal interactiva delante de ti, el otro manda el proceso a segundo plano sin
+terminal. Si quieres entrar más tarde a un contenedor que ya arrancó en segundo plano con
+<code>-d</code>, usa <code>docker exec -it &lt;contenedor&gt; bash</code> en vez de mezclar los flags al arrancarlo.</p>
+</div>
+<h3 id="mapeo-de-puertos-p-por-que-funciona-localhost-en-tu-navegador">Mapeo de Puertos (<code>-p</code>) — por qué funciona <code>localhost</code> en tu navegador</h3>
+<p>Un contenedor vive en su propia red aislada — por defecto, <strong>nada de fuera puede acceder a
+un puerto suyo</strong>, aunque el servicio de dentro esté funcionando perfectamente. <code>EXPOSE</code> en el
+Dockerfile solo <strong>documenta</strong> qué puerto usa el servicio; no lo hace accesible.</p>
+<p>Para que tu navegador (fuera del contenedor) pueda hablar con un servicio de dentro, hay que
+<strong>mapear</strong> un puerto de tu máquina a un puerto del contenedor con el flag <code>-p</code>:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">5173</span>:5173<span class="w"> </span>mi-imagen
+<span class="c1">#           │    │</span>
+<span class="c1">#           │    └── puerto DENTRO del contenedor (donde escucha el servicio)</span>
+<span class="c1">#           └─────── puerto en TU máquina (localhost) que se conecta a él</span>
+</code></pre></div>
+<p>Con esto, todo lo que llega a <code>localhost:5173</code> en tu navegador se redirige automáticamente
+al puerto <code>5173</code> de dentro del contenedor.</p>
+<div class="admonition example">
+<p class="admonition-title">Aplicado a DWEC</p>
+<p>Esto es exactamente lo que hace VS Code por ti automáticamente cuando trabajas con Dev
+Containers — por eso nunca has tenido que escribir este comando a mano en clase, pero es
+justo lo que ocurre por debajo cada vez que abres <code>localhost:5173</code> tras un <code>npm run dev</code>.</p>
+</div>
+<h3 id="comandos-sobre-un-contenedor-concreto">Comandos sobre un contenedor concreto</h3>
+<p>Patrón general: <code>docker [comando] [contenedor_id]</code></p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>rm<span class="w"> </span>9b6343d3b5a0<span class="w">        </span><span class="c1"># Elimina el contenedor</span>
+docker<span class="w"> </span>rmi<span class="w"> </span>fce289e99eb9<span class="w">       </span><span class="c1"># Elimina una imagen</span>
+docker<span class="w"> </span>restart<span class="w"> </span>09ca6feb6efc<span class="w">   </span><span class="c1"># Reinicia el contenedor</span>
+docker<span class="w"> </span>stop<span class="w"> </span>09ca6feb6efc<span class="w">      </span><span class="c1"># Para el contenedor</span>
+docker<span class="w"> </span>start<span class="w"> </span>09ca6feb6efc<span class="w">     </span><span class="c1"># Inicia el contenedor</span>
+docker<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>9b6343d3b5a0<span class="w">      </span><span class="c1"># Mata el contenedor (parada forzosa, sin gracia)</span>
+docker<span class="w"> </span>logs<span class="w"> </span>9b6343d3b5a0<span class="w">      </span><span class="c1"># Muestra los logs del contenedor</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>9b6343d3b5a0<span class="w"> </span>bash<span class="w">  </span><span class="c1"># Accede al contenedor y ejecuta comandos dentro de él</span>
+</code></pre></div>
+<p>Referencia completa de comandos: <a href="https://geekflare.com/es/docker-commands/">geekflare.com/es/docker-commands</a></p>
+<hr />
+<h2 id="8-logs">8. Logs</h2>
+<p>La herramienta <strong>Docker Logs</strong> se utiliza para obtener los logs o registros de un
+contenedor. Recupera por lotes los logs presentes en el momento de la ejecución del comando.</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;nombre_del_contenedor&quot;</span>
+</code></pre></div>
+<p>El flag <code>-f</code> (<em>follow</em>) mantiene el log abierto en tiempo real, en vez de mostrar solo una
+foto fija del momento.</p>
+<hr />
+<h2 id="9-diagrama-de-trabajo">9. Diagrama de Trabajo</h2>
+<p><img alt="Diagrama de flujo: creación y depuración de un contenedor Docker" src="../img/diagrama-flujo-trabajo.jpg" /></p>
+<p>Referencia: <a href="https://geekflare.com/es/docker-commands/">geekflare.com/es/docker-commands</a></p>
+<hr />
+<h2 id="10-docker-hub">10. Docker Hub</h2>
+<p><strong>Docker Hub</strong> es un <em>Docker Registry</em> público donde subir nuestras imágenes. Permite
+registrarnos gratuitamente y subir nuestros contenedores de forma pública, además de
+explorar repositorios oficiales de otros servicios.</p>
+<p>Crear una cuenta en <a href="https://hub.docker.com/">hub.docker.com</a></p>
+<p><strong>Pasos para publicar una imagen:</strong></p>
+<ol>
+<li>Registro en Docker Hub y creación de nuestro primer repositorio <strong>público</strong>.</li>
+<li>Usar el comando <code>docker login</code> para autenticar nuestro equipo en ese repositorio.</li>
+<li>Cambiar el <em>tag</em> de nuestro contenedor para ajustarlo al repositorio recién creado, y
+   subir la imagen con <code>docker push</code>.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># login</span>
+cat<span class="w"> </span>password.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>login<span class="w"> </span>--username<span class="w"> </span>demo<span class="w"> </span>--password-stdin
+
+<span class="c1"># tag images</span>
+docker<span class="w"> </span>tag<span class="w"> </span><span class="s2">&quot;imagen_local&quot;</span><span class="w"> </span><span class="s2">&quot;repositorio/imagen_local&quot;</span>
+
+<span class="c1"># push imagen</span>
+docker<span class="w"> </span>push<span class="w"> </span>repositorio/imagen_local
+</code></pre></div>
+<hr />
+<h2 id="11-docker-compose">11. Docker Compose</h2>
+<p><strong>El escenario:</strong> imagina una aplicación compuesta por Node.js, MongoDB y Redis —
+tres servicios distintos que tienen que funcionar juntos.</p>
+<p><strong>La frustración de gestionarlo a base de <code>docker run</code> suelto:</strong></p>
 <ul>
-<li><code>USER &lt;no-root&gt;</code> en el Dockerfile; nunca ejecutar el proceso principal como root.</li>
-<li><code>secrets:</code> en Compose para credenciales, no <code>environment:</code>.</li>
-<li>Escaneo de vulnerabilidades de imagen (Trivy/Grype) antes de publicar en registry.</li>
-<li>Límites de recursos (<code>--memory</code>, <code>--cpus</code>) por contenedor en hosts compartidos.</li>
+<li>Necesitas recordar el orden de ejecución (primero la base de datos, luego la app).</li>
+<li>Configuración manual de <code>--network</code> para que los contenedores se puedan comunicar entre
+  sí.</li>
+<li>Variables de entorno kilométricas escritas a mano en la terminal.</li>
+<li>Dificultad para replicar exactamente el mismo entorno en el equipo de un compañero.</li>
 </ul>
-<h2 id="diagnostico-logs-y-troubleshooting">🩺 Diagnóstico, Logs y Troubleshooting</h2>
+<p><strong>Docker Compose</strong> resuelve exactamente este problema: describe todos los servicios, sus
+redes y sus variables de entorno en un único fichero (<code>docker-compose.yml</code>), y los levanta
+todos juntos, en el orden correcto, con un solo comando.</p>
+<h3 id="111-que-es-exactamente-docker-compose">11.1. ¿Qué es exactamente Docker Compose?</h3>
+<p>Es una <strong>herramienta de orquestación</strong> — no crea ningún concepto nuevo respecto a lo que ya
+sabes (sigue habiendo imágenes, contenedores, volúmenes, puertos), simplemente lee un fichero
+de configuración (<code>docker-compose.yml</code>) y ejecuta, por ti, todos los <code>docker run</code> con sus
+flags correspondientes, en el orden correcto, conectados a la misma red.</p>
+<p>Piensa en ello como la diferencia entre encender uno a uno los electrodomésticos de una
+cocina, o pulsar un único interruptor general que los enciende todos en el orden correcto.</p>
+<h3 id="112-anatomia-de-un-docker-composeyml-explicada-linea-a-linea">11.2. Anatomía de un <code>docker-compose.yml</code>, explicada línea a línea</h3>
+<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">app</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;5173:5173&quot;</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mongo</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DB_HOST=mongo</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.:/app</span>
+
+<span class="w">  </span><span class="nt">mongo</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mongo:7</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">datos_mongo:/data/db</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">datos_mongo</span><span class="p">:</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Clave</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>services:</code></td>
+<td>La lista de contenedores que forman tu aplicación. Cada uno definido debajo es un servicio independiente.</td>
+</tr>
+<tr>
+<td><code>app:</code> / <code>mongo:</code></td>
+<td>El <strong>nombre</strong> que le das a cada servicio. No es decorativo: este nombre es el que usan los demás servicios para encontrarlo en la red (ver más abajo).</td>
+</tr>
+<tr>
+<td><code>build: .</code></td>
+<td>"Construye la imagen de este servicio a partir del <code>Dockerfile</code> que hay en esta misma carpeta." Se usa cuando el servicio es <strong>tu propio código</strong>.</td>
+</tr>
+<tr>
+<td><code>image: mongo:7</code></td>
+<td>"Usa directamente esta imagen ya existente de Docker Hub, no hace falta construir nada." Se usa para servicios de terceros (bases de datos, colas de mensajes...) que no vas a modificar.</td>
+</tr>
+<tr>
+<td><code>ports:</code></td>
+<td>Mapeo de puertos — es el mismo <code>-p</code> host:contenedor que ya viste con <code>docker run</code>, solo que en formato lista.</td>
+</tr>
+<tr>
+<td><code>depends_on:</code></td>
+<td>Controla el <strong>orden de arranque</strong>: <code>app</code> no empieza a levantarse hasta que el contenedor de <code>mongo</code> ha arrancado. <em>(Ojo: lee el aviso más abajo — "arrancado" no es lo mismo que "listo para recibir conexiones".)</em></td>
+</tr>
+<tr>
+<td><code>environment:</code></td>
+<td>Variables de entorno para ese servicio — el equivalente en Compose al flag <code>-e</code> de <code>docker run</code>.</td>
+</tr>
+<tr>
+<td><code>volumes:</code> (dentro de un servicio)</td>
+<td>Qué se monta y dónde. Puede ser un volumen con nombre (<code>datos_mongo:/data/db</code>) o un <em>bind mount</em> (<code>.:/app</code> — sigue leyendo).</td>
+</tr>
+<tr>
+<td><code>volumes:</code> (al final, fuera de <code>services</code>)</td>
+<td>Declara los volúmenes con nombre que se usan arriba, para que Docker los cree y los gestione.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="113-dos-tipos-de-volumes-muy-distintos-y-uno-es-justo-lo-que-usa-tu-dev-container">11.3. Dos tipos de <code>volumes</code> muy distintos — y uno es justo lo que usa tu Dev Container</h3>
+<p><strong>Volumen con nombre</strong> (<code>datos_mongo:/data/db</code>): Docker gestiona dónde se guarda físicamente
+ese dato. Lo usas para datos que quieres que <strong>persistan</strong> (como la base de datos), pero que
+no necesitas mirar ni editar tú directamente desde fuera del contenedor.</p>
+<p><strong>Bind mount</strong> (<code>.:/app</code>): conecta directamente una carpeta de <strong>tu máquina</strong> (<code>.</code>, la carpeta
+actual) con una carpeta <strong>dentro del contenedor</strong> (<code>/app</code>). Cualquier cambio que hagas en tu
+editor se refleja al instante dentro del contenedor, y viceversa — son literalmente la misma
+carpeta vista desde dos sitios.</p>
+<div class="admonition example">
+<p class="admonition-title">Aplicado a DWEC</p>
+<p>Esto es exactamente lo que hace posible Dev Containers. Cuando editas un archivo en VS
+Code y ves el cambio reflejado al instante dentro del contenedor (sin tener que
+reconstruir ni copiar nada), es un <em>bind mount</em> trabajando por debajo — tu carpeta del
+proyecto está montada dentro del contenedor, no copiada.</p>
+</div>
+<h3 id="114-como-se-comunican-los-servicios-entre-si">11.4. Cómo se comunican los servicios entre sí</h3>
+<p>Docker Compose crea automáticamente una <strong>red privada</strong> compartida por todos los servicios
+del mismo fichero. Dentro de esa red, cada servicio puede llamar a los demás <strong>usando su
+nombre como si fuera un dominio</strong> — no hace falta averiguar ninguna IP:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Dentro del contenedor &quot;app&quot;, esto FUNCIONA:</span>
+<span class="nx">mongoose</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="s2">&quot;mongodb://mongo:27017/miapp&quot;</span><span class="p">);</span>
+<span class="c1">//                          └─┬─┘</span>
+<span class="c1">//                 el nombre del servicio en docker-compose.yml,</span>
+<span class="c1">//                 Docker lo resuelve automáticamente</span>
+</code></pre></div>
+<p>Esto solo funciona <strong>entre contenedores de la misma red de Compose</strong> — tu navegador, que
+está fuera de esa red, nunca podría usar <code>mongo</code> como si fuera una URL real; para el
+navegador todo pasa siempre por <code>localhost</code> y el puerto mapeado.</p>
+<h3 id="115-comandos-de-docker-compose">11.5. Comandos de Docker Compose</h3>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w">            </span><span class="c1"># Construye (si hace falta) y levanta TODOS los servicios</span>
+docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w">         </span><span class="c1"># Igual, pero en segundo plano (recuperas el terminal)</span>
+docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>--build<span class="w">    </span><span class="c1"># Fuerza reconstruir las imágenes, aunque ya existan</span>
+docker<span class="w"> </span>compose<span class="w"> </span>down<span class="w">          </span><span class="c1"># Para y ELIMINA los contenedores (los volúmenes con nombre se conservan)</span>
+docker<span class="w"> </span>compose<span class="w"> </span>down<span class="w"> </span>-v<span class="w">       </span><span class="c1"># Igual, pero además borra los volúmenes con nombre (¡pierdes los datos!)</span>
+docker<span class="w"> </span>compose<span class="w"> </span>ps<span class="w">            </span><span class="c1"># Lista el estado de los servicios de ESTE proyecto</span>
+docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w">          </span><span class="c1"># Logs de todos los servicios a la vez</span>
+docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>app<span class="w">   </span><span class="c1"># Logs en tiempo real de un único servicio (&quot;app&quot;)</span>
+docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>app<span class="w"> </span>sh<span class="w">   </span><span class="c1"># Abre una terminal dentro del contenedor &quot;app&quot; (equivalente a &quot;docker exec&quot;)</span>
+docker<span class="w"> </span>compose<span class="w"> </span>restart<span class="w"> </span>app<span class="w">   </span><span class="c1"># Reinicia solo un servicio, sin tocar los demás</span>
+</code></pre></div>
+<h3 id="116-el-error-mas-comun-depends_on-no-espera-a-que-el-servicio-este-listo">11.6. El error más común: <code>depends_on</code> no espera a que el servicio esté "listo"</h3>
+<div class="admonition danger">
+<p class="admonition-title">Arrancado no es lo mismo que listo para recibir conexiones</p>
+<p><code>depends_on</code> solo garantiza que Docker <strong>arranca</strong> <code>mongo</code> antes que <code>app</code> — no que
+MongoDB ya esté aceptando conexiones cuando <code>app</code> empiece a ejecutarse. Un contenedor
+puede tardar unos segundos en estar realmente operativo por dentro, aunque el contenedor
+ya figure como "iniciado".</p>
+<p><strong>Síntoma típico:</strong> tu <code>app</code> falla al conectar a la base de datos justo al arrancar todo
+con <code>docker compose up</code>, pero funciona perfectamente si la reinicias 5 segundos después
+(<code>docker compose restart app</code>) — porque para entonces <code>mongo</code> ya estaba listo de verdad.</p>
+</div>
+<p><strong>Cómo se soluciona en proyectos reales:</strong> con lógica de reintento en el propio código de la
+app (reintentar la conexión unas cuantas veces con una pequeña espera entre intentos), o con
+una condición de <code>healthcheck</code> en el <code>docker-compose.yml</code> (más avanzado, lo verás si trabajas
+con Compose en profundidad más adelante).</p>
+<hr />
+<h2 id="12-docker-mas-alla-de-este-modulo">12. Docker Más Allá de Este Módulo</h2>
+<p>Todo lo anterior lo has visto aplicado a DWEC, pero Docker no es una herramienta de esta
+asignatura — es una pieza estándar de la industria que te vas a encontrar en casi cualquier
+módulo o puesto de trabajo relacionado con desarrollo o sistemas. Esto es lo que conviene que
+reconozcas aunque no lo domines todavía:</p>
+<h3 id="docker-desktop-como-lo-vas-a-instalar-tu-mismo">Docker Desktop — cómo lo vas a instalar tú mismo</h3>
+<p>En este módulo ya tienes el contenedor preparado de antemano, pero en otras asignaturas (o en
+tu propio ordenador) probablemente necesites instalarlo tú. <strong>Docker Desktop</strong> es la
+aplicación oficial con interfaz gráfica para Windows y macOS — instala por debajo el mismo
+motor de Docker que has usado aquí por terminal, pero añade una ventana donde puedes ver tus
+imágenes, contenedores y volúmenes con clics en vez de comandos. En Linux, se suele instalar
+directamente el motor (<em>Docker Engine</em>) sin la capa gráfica, porque el terminal ya es nativo
+del sistema.</p>
+<h3 id="el-siguiente-escalon-kubernetes">El Siguiente Escalón: Kubernetes</h3>
+<p>Docker Compose es perfecto para levantar 2-5 servicios en tu propio ordenador o en un único
+servidor. Pero, ¿qué pasa cuando una empresa necesita ejecutar <strong>cientos</strong> de contenedores,
+repartidos en decenas de servidores, que además tienen que reiniciarse solos si fallan y
+multiplicarse automáticamente si hay mucho tráfico? Para eso existe <strong>Kubernetes</strong> (a menudo
+abreviado <em>K8s</em>) — un orquestador de contenedores a gran escala. No es tema de este módulo,
+pero es el nombre que verás constantemente en ofertas de trabajo junto a "Docker", y ahora
+ya sabes qué problema resuelve cada uno: Docker empaqueta y ejecuta; Kubernetes decide
+<strong>dónde, cuántas copias y qué hacer si algo falla</strong>, cuando la escala ya no cabe en un
+<code>docker-compose.yml</code>.</p>
+<h3 id="donde-te-lo-vas-a-encontrar-en-la-practica">Dónde te lo vas a encontrar en la práctica</h3>
 <ul>
-<li><code>docker compose logs -f &lt;servicio&gt;</code> para <em>stdout/stderr</em> en vivo.</li>
-<li>Contenedor en <code>Restarting</code> continuo → revisar <code>docker inspect</code> y logs del healthcheck.</li>
-<li><code>docker stats</code> para descartar saturación de CPU/RAM antes de escalar.</li>
+<li><strong>Integración Continua (CI/CD):</strong> cuando subes código a GitHub, es muy común que se ejecute
+  automáticamente dentro de un contenedor Docker para compilarlo y testearlo en un entorno
+  limpio e idéntico cada vez — ni tu sistema operativo ni lo que tengas instalado localmente
+  afecta al resultado.</li>
+<li><strong>Despliegue en la nube:</strong> AWS, Azure y Google Cloud aceptan contenedores Docker de forma
+  nativa como unidad de despliegue — "sube tu imagen y nosotros la ejecutamos" es hoy la
+  forma más común de publicar una aplicación en producción.</li>
+<li><strong>Arquitecturas de microservicios:</strong> aplicaciones grandes divididas en piezas pequeñas e
+  independientes (facturación, usuarios, notificaciones...), cada una en su propio
+  contenedor, que se comunican entre sí igual que viste en la sección de Docker Compose —
+  solo que a mayor escala.</li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">Lo que te tienes que llevar de esta unidad</p>
+<p>No es memorizar comandos, sino entender el <strong>porqué</strong> de cada pieza (imagen, contenedor,
+volumen, red, puerto) — esa base conceptual es la que se mantiene igual, uses Docker en
+DWEC, en otra asignatura, o en tu primer trabajo.</p>
+</div>
+<hr />
+<h2 id="13-redes-en-docker-topologias-multi-red">13. Redes en Docker: Topologías Multi-Red</h2>
+<p>Hasta ahora has trabajado siempre con una única red por defecto: todos los servicios de tu
+<code>docker-compose.yml</code> se ven entre sí sin que tengas que pensar en ello. Eso cambia en cuanto
+un proyecto necesita <strong>más de una red</strong> — por ejemplo, para separar una zona de servicios
+internos de una zona expuesta al exterior. Esta sección explica cómo se comporta Docker en
+ese caso, porque el razonamiento es el mismo se use para lo que se use: aislar una base de
+datos, separar un front de un back, o construir una topología de seguridad completa.</p>
+<h3 id="131-el-comportamiento-por-defecto-el-punto-de-partida-mental">13.1. El comportamiento por defecto (el punto de partida mental)</h3>
+<ul>
+<li>Cada red de Docker (<code>bridge</code>) es, en esencia, un conmutador virtual: todos los contenedores
+  conectados a la misma red se ven entre sí directamente, en igualdad de condiciones.</li>
+<li>Docker asigna automáticamente una subred y reparte IPs a los contenedores que se conectan a
+  ella, salvo que se indique lo contrario.</li>
+<li>Por defecto, todo contenedor tiene salida a Internet a través de NAT en el host — como el
+  wifi de casa, donde todo lo que hay detrás del router comparte una salida.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Docker no es \"seguro por defecto\" entre sus propios contenedores</p>
+<p>Si metes dos servicios en la MISMA red Docker, no hay ningún control de tráfico entre
+ellos por el simple hecho de estar en Docker. El aislamiento y el filtrado hay que
+construirlos explícitamente — por defecto, una red Docker es plana.</p>
+</div>
+<h3 id="132-redes-personalizadas-el-primer-nivel-de-segmentacion">13.2. Redes personalizadas: el primer nivel de segmentación</h3>
+<p>Cuando defines tus propias redes en <code>docker-compose.yml</code> (en vez de usar la red por defecto),
+controlas de verdad la topología:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">networks</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">lan_net</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bridge</span>
+<span class="w">    </span><span class="nt">ipam</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">subnet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.10.10.0/24</span>
+</code></pre></div>
+<p>Dos contenedores en redes <strong>distintas</strong> no se ven entre sí — ni siquiera hacen <code>ping</code> — a
+menos que algo los conecte. Esa es la base real de cualquier segmentación tipo "zona interna
+/ zona expuesta": no es una fantasía de diagrama, es una consecuencia directa de que sean
+redes Docker diferentes.</p>
+<h3 id="133-la-trampa-de-la-ip-1">13.3. La trampa de la IP <code>.1</code></h3>
+<p>Docker reserva automáticamente la primera IP utilizable de cada subred (normalmente la <code>.1</code>)
+para la puerta de enlace del propio bridge — el "router" interno que crea Docker para esa
+red. Es exactamente igual que en una red doméstica: el router casi siempre es la <code>.1</code>.</p>
+<div class="admonition danger">
+<p class="admonition-title">Si asignas la IP .1 a un contenedor tuyo, choca con esa puerta de enlace</p>
+<p>El síntoma no siempre es un error claro al arrancar — a veces el contenedor arranca pero
+la conectividad se comporta de forma rara. <code>docker network inspect &lt;red&gt;</code> muestra el
+campo <code>"Gateway"</code>: conviene comprobarlo antes de fijar IPs a mano en el <code>docker-compose.yml</code>.</p>
+</div>
+<h3 id="134-internal-true-que-hace-de-verdad-y-que-no">13.4. <code>internal: true</code> — qué hace de verdad (y qué no)</h3>
+<p>Una red marcada como <code>internal: true</code> no tiene ninguna ruta de salida fuera de sí misma — ni
+a Internet, ni a otra red Docker, aunque el host sí tenga conectividad. Los contenedores de
+esa red solo pueden hablar entre ellos, nunca salir por su cuenta.</p>
+<div class="admonition tip">
+<p class="admonition-title">Por qué esto no basta por sí solo</p>
+<p><code>internal: true</code> aísla la red, pero no crea automáticamente un camino controlado hacia
+ella desde fuera. Ese camino hay que construirlo con un contenedor que SÍ esté conectado
+a las dos redes a la vez (<em>dual-homed</em>) — es el único punto de paso entre ambas.</p>
+</div>
+<h3 id="135-por-que-hacen-falta-rutas-explicitas-y-net_admin">13.5. Por qué hacen falta rutas explícitas y <code>NET_ADMIN</code></h3>
+<p>Aquí es donde más gente se pierde, porque parece que "ya debería funcionar" y no funciona.
+La secuencia lógica, paso a paso:</p>
+<ol>
+<li>Un contenedor de <code>red_a</code> quiere hablar con uno de <code>red_b</code>. No están en la misma red, así
+   que el sistema operativo del contenedor necesita saber <strong>por dónde</strong> llegar a esa subred
+   — eso es una ruta.</li>
+<li>Por defecto, un contenedor solo conoce la puerta de enlace de <strong>su propia</strong> red. No sabe
+   nada de <code>red_b</code>.</li>
+<li>Hay que añadirle una ruta estática: "para llegar a la subred de <code>red_b</code>, pasa por el
+   contenedor dual-homed" — eso es lo que hace un <code>entrypoint.sh</code> con <code>ip route add</code>.</li>
+<li>Modificar la tabla de rutas de un contenedor requiere la capacidad <code>NET_ADMIN</code> — sin ella,
+   <code>ip route add</code> falla con <code>Operation not permitted</code>.</li>
+<li>Y hace falta la ruta <strong>en los dos sentidos</strong>: el contenedor de destino también necesita
+   saber cómo volver al origen — si solo se añade la ruta de ida, las respuestas se pierden y
+   parece un fallo aleatorio de conectividad.</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">El paralelismo que ayuda a entenderlo</p>
+<p>Esto es literalmente lo mismo que configurar el encaminamiento entre dos redes físicas
+con un router de por medio — con máquinas virtuales harías esto mismo con <code>ip route</code> o
+con la configuración de red del sistema operativo. Docker no cambia el concepto de redes
+y rutas, solo cambia dónde vive cada máquina.</p>
+</div>
+<h3 id="136-como-se-resuelven-los-nombres-entre-contenedores">13.6. Cómo se resuelven los nombres entre contenedores</h3>
+<p>Docker Compose crea, para cada red personalizada, un servidor DNS interno que resuelve el
+<strong>nombre del servicio</strong> (tal como aparece en <code>docker-compose.yml</code>) a su IP — siempre que
+ambos contenedores compartan esa red. Si un contenedor necesita un nombre concreto que no
+coincide con el nombre del servicio (por ejemplo, para que cuadre con un certificado TLS),
+hay que decidir explícitamente si se resuelve por DNS interno de Docker (dándole ese nombre
+exacto al servicio, o un alias de red) o a mano por <code>/etc/hosts</code> — y ser consistente con esa
+decisión en todo lo que dependa de ese nombre.</p>
+<div class="admonition example">
+<p class="admonition-title">Aplicado a SAD</p>
+<p>En el módulo de Seguridad y Alta Disponibilidad (SAD), estas ideas se llevan al extremo
+en un escenario llamado <strong>SecureCorp</strong>: una topología con una red <code>lan_net</code>
+(10.10.10.0/24), una red <code>dmz_net</code> (10.10.20.0/24, marcada <code>internal: true</code>) y un único
+contenedor <code>fw-perimeter</code>, dual-homed, en la IP <code>.2</code> de cada una — nunca en la <code>.1</code>,
+precisamente por la trampa explicada arriba. Los contenedores de <code>lan_net</code> solo llegan a
+los de <code>dmz_net</code> a través de rutas explícitas que pasan por <code>fw-perimeter</code>, con
+<code>NET_ADMIN</code> en cada <code>entrypoint.sh</code>, y <code>fw-perimeter</code> es quien de verdad filtra ese
+tráfico. A lo largo del curso esa misma topología se amplía con una red que simula
+Internet, un túnel VPN y una red adicional para una aplicación web — pero el mecanismo de
+base es exactamente el que se explica en esta sección.</p>
+<table>
+<thead>
+<tr>
+<th>Red</th>
+<th>Subred</th>
+<th>Tipo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lan_net</code></td>
+<td>10.10.10.0/24</td>
+<td>bridge normal — clientes internos</td>
+</tr>
+<tr>
+<td><code>dmz_net</code></td>
+<td>10.10.20.0/24</td>
+<td>internal — aloja el servicio protegido</td>
+</tr>
+<tr>
+<td><code>internet_net</code></td>
+<td>10.10.30.0/24</td>
+<td>bridge normal — simula "el exterior"</td>
+</tr>
+<tr>
+<td><code>dmz_web</code></td>
+<td>10.10.40.0/24</td>
+<td>internal — aloja la aplicación web</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Errores típicos con redes multi-red</p>
+<ul>
+<li>Poner un contenedor en la IP <code>.1</code> de una red personalizada (choca con el gateway
+  reservado por Docker).</li>
+<li>Marcar una red como <code>internal</code> y esperar que aun así tenga salida a Internet o a otra
+  red — no la tiene, ni la tendrá, sin un contenedor dual-homed.</li>
+<li>Añadir la ruta de ida (cliente → servidor) y olvidar la de vuelta (servidor → cliente)
+  — la conectividad falla de forma asimétrica y es difícil de diagnosticar.</li>
+<li>Aplicar reglas o rutas a mano dentro de un contenedor ya arrancado, sin guardarlas en el
+  <code>Dockerfile</code>/<code>entrypoint</code> — funcionan hasta el siguiente <code>docker compose restart</code> o
+  <code>down &amp;&amp; up</code>, momento en el que "desaparece la magia".</li>
+<li>Confundir <code>NET_ADMIN</code> (capacidad para tocar la configuración de red de UN contenedor)
+  con tener control sobre la red de Docker en general — son cosas distintas.</li>
+</ul>
+</div>
 
 
 
