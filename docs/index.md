@@ -10,7 +10,7 @@ web, los protocolos HTTP/TLS y los servidores Apache y Nginx.
 
 ## Unidades disponibles
 
-- [UD1 · Arquitectura Web, Protocolos y SSL](ud01-arquitectura-web-ssl.md)
-- [UD2 · Servidores Web Clásicos: Apache](ud02-apache.md)
-- [UD3 · Servidores de Alto Rendimiento: Nginx](ud03-nginx.md)
-- [Referencia tecnológica (cheat sheets)](tech/index.md)
+- [UD1 · Arquitectura Web, Protocolos y SSL](unidades/ud01.md)
+- [UD2 · Servidores Web Clásicos: Apache](unidades/ud02.md)
+- [UD3 · Servidores de Alto Rendimiento: Nginx](unidades/ud03.md)
+- [Referencia tecnológica (cheat sheets)](https://jmfiorisies.github.io/tech/)
