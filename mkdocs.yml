@@ -97,6 +97,7 @@ nav:
       - "UD1 · Arquitectura Web, Protocolos y SSL": unidades/ud01.md
       - "UD2 · Servidores Web Clásicos: Apache": unidades/ud02.md
       - "UD3 · Servidores de Alto Rendimiento: Nginx": unidades/ud03.md
+      - "UD4 · Entorno PHP: Nginx + PHP-FPM": unidades/ud04.md
   - Referencia Tecnológica:
       - "Árbol tecnológico completo": https://jmfiorisies.github.io/tech/
       - "HTTP / TLS": https://jmfiorisies.github.io/tech/http-tls/
