@@ -9,8 +9,6 @@ theme:
     repo: fontawesome/brands/github
 
   features:
-    - navigation.sections
-    - navigation.expand
     - navigation.indexes
     - navigation.top
     - navigation.instant
@@ -57,9 +55,11 @@ extra_javascript:
   - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
   - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - javascripts/mapas.js            # visor ampliable de los mapas SVG (docs/iaw/mapas/insertar.py)
 
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/mapas.css
 
 plugins:
   - search
@@ -93,11 +93,23 @@ plugins:
 
 nav:
   - Inicio: index.md
-  - 1er Trimestre:
+  - Planificación Docente: planificacion.md
+  - "1.ª Evaluación":
       - "UD1 · Arquitectura Web, Protocolos y SSL": unidades/ud01.md
       - "UD2 · Servidores Web Clásicos: Apache": unidades/ud02.md
       - "UD3 · Servidores de Alto Rendimiento: Nginx": unidades/ud03.md
       - "UD4 · Entorno PHP: Nginx + PHP-FPM": unidades/ud04.md
+      - "UD5 · Python detrás de Nginx: Gunicorn + Flask": unidades/ud05.md
+      - "UD6 · La base de datos (MariaDB) y la configuración en Git": unidades/ud06.md
+  # Baterías y prácticas: CIFRADAS con la contraseña del curso (los originales están en Organización,
+  # web-protegida/iaw). Se regeneran con Organizacion/web-protegida/publicar.sh IAW
+  - 🏋️ Practicar (con contraseña):
+      - Baterías de ejercicios:
+          - "UD4 · PHP con Nginx y PHP-FPM": unidades/ud04-1-bateria/
+          - "UD5 · Python con Nginx y Gunicorn": unidades/ud05-1-bateria/
+          - "UD6 · MariaDB y Git": unidades/ud06-1-bateria/
+      - Prácticas:
+          - "P2 · Radio Marea (UD4–UD6)": practicas/p2-radio-marea/
   - Referencia Tecnológica:
       - "Árbol tecnológico completo": https://jmfiorisies.github.io/tech/
       - "HTTP / TLS": https://jmfiorisies.github.io/tech/http-tls/
@@ -105,3 +117,8 @@ nav:
       - "Nginx": https://jmfiorisies.github.io/tech/nginx/
       - "Docker": https://jmfiorisies.github.io/tech/docker/
   - "🏠 Portal docente": https://jmfiorisies.github.io/
+
+# Las páginas cifradas (Practicar) son HTML ya hechos, no .md: que el menú no las tome por enlaces rotos
+validation:
+  nav:
+    not_found: info

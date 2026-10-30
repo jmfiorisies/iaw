@@ -1,0 +1,20 @@
+.mapa-iaw{margin:1em 0;border:1px solid #dadce0;border-radius:10px;background:#fff;overflow:hidden}
+.mapa-iaw .uml-barra{display:flex;justify-content:space-between;align-items:center;gap:.5em;padding:.45em .7em;background:#e6f4ea;border-bottom:1px solid #a8dab5;font-size:.75rem;color:#5f6368}
+.mapa-iaw .uml-lienzo{cursor:zoom-in}
+.uml-btn{font:inherit;font-size:.75rem;font-weight:700;border:1px solid #188038;color:#188038;background:#fff;border-radius:6px;padding:.3em .8em;cursor:pointer}
+.uml-btn:hover{background:#188038;color:#fff}
+.uml-modal{position:fixed;inset:0;z-index:9999;background:#ffffff;display:flex;flex-direction:column}
+.uml-modal .uml-barra{display:flex;flex-wrap:wrap;align-items:center;gap:.4em;padding:.5em .8em;background:#188038;color:#fff;font-size:.8rem}
+.uml-modal .uml-barra .uml-btn{border-color:#fff;color:#fff;background:transparent}
+.uml-modal .uml-barra .uml-btn:hover{background:#fff;color:#188038}
+.uml-modal .uml-ayuda{margin-left:auto;opacity:.9}
+.uml-modal .uml-zona{flex:1;overflow:hidden;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
+.uml-modal .uml-zona.arrastrando{cursor:grabbing}
+.uml-modal .uml-zona svg{width:100%;height:100%;display:block}
+[data-md-color-scheme=slate] .mapa-iaw,[data-md-color-scheme=slate] .uml-modal{--mt-202124:#e8eaed;--mt-3c4043:#c9cdd1;--mt-5f6368:#a8adb3;--mt-80868b:#9aa0a6;--mt-1a4fa0:#8ab4f8;--mt-4285f4:#8ab4f8;--mt-9334e6:#c58af9;--mt-188038:#81c995;--mt-007b83:#5ccfd6;--mt-e37400:#fdb863;--mt-d93025:#f28b82;--mt-b5179e:#f48fdc;--mt-b06000:#fdb863;--mf-dadce0:#4a4e57;--mf-c6d8fb:#3b5a94;--mf-f6f7f8:#262931;--mf-fef7e0:#2f2a1d;--mf-e6f4ea:#1d2c23;--mf-e4f7f8:#1b2c2d;--mf-eef3fe:#1f2738;--mf-f6efff:#2a2238;--mf-fdecea:#3a2324;--mf-f3fbfb:#1e2b2c;--mf-faf5ff:#2a2238;--mf-f8f9fa:#272a31;--mf-fafafa:#272a31;--mf-f1f3f4:#3c4043;--mf-202125:#0f1013;--mf-1a4fa0:#8ab4f8;--mf-80868b:#9aa0a6;--mf-202124:#e8eaed;--m-fondo:#2a2d37;--m-lienzo:#1f2129}
+[data-md-color-scheme=slate] .mapa-iaw{background:#1f2129;border-color:#4a4e57}
+[data-md-color-scheme=slate] .mapa-iaw .uml-barra{background:#1f2738;border-bottom-color:#3b5a94;color:#a8adb3}
+[data-md-color-scheme=slate] .mapa-iaw .uml-btn{background:transparent;color:#81c995;border-color:#81c995}
+[data-md-color-scheme=slate] .mapa-iaw .uml-btn:hover{background:#81c995;color:#1f2129}
+[data-md-color-scheme=slate] .uml-modal{background:#1f2129}
+[data-md-color-scheme=slate] .uml-modal .uml-barra .uml-btn{color:#fff;border-color:#fff}
